@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flashcards — Calvinismo & Arminianismo</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap');
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --ink:#1C1814;
+  --gold:#A8793A;
+  --gold-light:#7A5520;
+  --gold-dim:#C9A96E;
+  --parchment:#F2ECD9;
+  --parchment-dark:#E8DEC8;
+  --cream:#FAF7F0;
+  --muted:#9A8A72;
+  --border:#C9A96E;
+}
+
+body{
+  font-family:'Inter',sans-serif;
+  background:var(--parchment);
+  color:var(--ink);
+  min-height:100vh;
+  padding:2.5rem 1rem 3rem;
+  position:relative;
+  overflow-x:hidden;
+}
+
+/* ── Background decorative layer ── */
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 0%, #EDE4CC 0%, transparent 70%),
+    radial-gradient(ellipse 60% 40% at 0% 100%, #E8DEC8 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 100% 100%, #E8DEC8 0%, transparent 60%);
+  pointer-events:none;
+  z-index:0;
+}
+
+.bg-ornament{
+  position:fixed;
+  pointer-events:none;
+  z-index:0;
+  opacity:.08;
+}
+.bg-ornament.top-left{top:-60px;left:-60px;width:420px;height:420px}
+.bg-ornament.bottom-right{bottom:-60px;right:-60px;width:420px;height:420px;transform:rotate(180deg)}
+.bg-ornament.top-right{top:20px;right:-40px;width:220px;height:220px;opacity:.05}
+.bg-ornament.center{top:50%;left:50%;transform:translate(-50%,-50%);width:700px;height:700px;opacity:.04}
+
+.container{
+  max-width:640px;
+  margin:0 auto;
+  position:relative;
+  z-index:1;
+}
+
+/* ── Header ── */
+.header{text-align:center;margin-bottom:2.5rem;padding-bottom:2rem;border-bottom:1px solid rgba(168,121,58,.25)}
+.header-ornament{display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:1.25rem}
+.header-ornament-line{flex:1;max-width:80px;height:1px;background:linear-gradient(to right,transparent,var(--gold))}
+.header-ornament-line.right{background:linear-gradient(to left,transparent,var(--gold))}
+.header-ornament-cross{color:var(--gold);font-size:18px;opacity:.8}
+.header h1{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:400;letter-spacing:.12em;color:var(--ink);text-transform:uppercase;margin-bottom:6px}
+.header p{font-size:12px;font-weight:300;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+
+/* ── Counter & Progress ── */
+.meta-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem}
+.counter{font-size:12px;color:var(--muted);letter-spacing:.05em;font-weight:300}
+.shuffle-btn{
+  font-family:'Inter',sans-serif;
+  font-size:11px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  padding:7px 16px;
+  border:1px solid rgba(168,121,58,.45);
+  border-radius:2px;
+  background:transparent;
+  color:var(--gold-light);
+  cursor:pointer;
+  transition:all .2s;
+  font-weight:400;
+}
+.shuffle-btn:hover{background:rgba(168,121,58,.1);border-color:var(--gold)}
+
+.progress-track{height:1px;background:rgba(168,121,58,.2);margin-bottom:1.75rem;position:relative}
+.progress-fill{height:100%;background:var(--gold);transition:width .4s ease;position:relative}
+.progress-fill::after{content:'';position:absolute;right:-3px;top:-3px;width:7px;height:7px;background:var(--gold);border-radius:50%;transition:opacity .3s}
+
+/* ── Filters ── */
+.filter-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:2rem;justify-content:center}
+.filter-btn{
+  font-size:11px;
+  font-weight:400;
+  letter-spacing:.07em;
+  text-transform:uppercase;
+  padding:5px 14px;
+  border:1px solid rgba(168,121,58,.3);
+  border-radius:1px;
+  background:transparent;
+  color:var(--muted);
+  cursor:pointer;
+  transition:all .18s;
+}
+.filter-btn:hover{border-color:rgba(168,121,58,.6);color:var(--gold-light)}
+.filter-btn.active{border-color:var(--gold);color:var(--gold-light);background:rgba(168,121,58,.1)}
+
+/* ── Card ── */
+.card-scene{perspective:1100px;margin-bottom:1.5rem}
+
+.card-3d{
+  position:relative;
+  width:100%;
+  min-height:300px;
+  transform-style:preserve-3d;
+  transition:transform .5s cubic-bezier(.4,0,.2,1);
+  cursor:pointer;
+}
+.card-3d.flipped{transform:rotateY(180deg)}
+
+.card-face{
+  position:absolute;
+  width:100%;
+  min-height:300px;
+  backface-visibility:hidden;
+  -webkit-backface-visibility:hidden;
+  border-radius:3px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:2.5rem 2rem;
+  overflow:hidden;
+}
+
+/* Front card — agora escuro */
+.card-face.front{
+  background:var(--ink);
+  border:1px solid rgba(201,169,110,.3);
+  box-shadow:0 0 0 4px rgba(168,121,58,.06), inset 0 0 60px rgba(201,169,110,.03);
+}
+
+/* Decorative corner ornaments on front */
+.card-face.front::before,
+.card-face.front::after{
+  content:'';
+  position:absolute;
+  width:48px;
+  height:48px;
+  border-color:rgba(201,169,110,.35);
+  border-style:solid;
+  opacity:1;
+}
+.card-face.front::before{top:14px;left:14px;border-width:1px 0 0 1px}
+.card-face.front::after{bottom:14px;right:14px;border-width:0 1px 1px 0}
+
+/* Back card — agora claro (pergaminho) */
+.card-face.back{
+  transform:rotateY(180deg);
+  background:var(--parchment-dark);
+  border:1px solid var(--border);
+  box-shadow:0 0 0 4px rgba(168,121,58,.06), inset 0 0 80px rgba(28,24,20,.04);
+}
+.card-face.back::before,
+.card-face.back::after{
+  content:'';
+  position:absolute;
+  width:48px;
+  height:48px;
+  border-color:var(--gold);
+  border-style:solid;
+  opacity:.5;
+}
+.card-face.back::before{top:14px;left:14px;border-width:1px 0 0 1px}
+.card-face.back::after{bottom:14px;right:14px;border-width:0 1px 1px 0}
+
+/* Cross watermark on back */
+.card-watermark{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  opacity:.04;
+  pointer-events:none;
+}
+
+.card-tag{
+  font-size:10px;
+  font-weight:500;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  padding:3px 12px;
+  border:1px solid currentColor;
+  border-radius:1px;
+  margin-bottom:1.5rem;
+  opacity:.75;
+}
+/* Tags na frente (fundo escuro) — cores claras */
+.front .tag-cal{color:#85B7EB}
+.front .tag-arm{color:#FAC775}
+.front .tag-ref{color:#97C459}
+.front .tag-hist{color:#F4C0D1}
+.front .tag-gen{color:#B4B2A9}
+
+/* Tag no verso (fundo claro) — cores escuras */
+.back .card-tag{color:var(--gold-light);border-color:var(--gold)}
+
+.card-question{
+  font-family:'Cormorant Garamond',serif;
+  font-size:20px;
+  font-weight:400;
+  line-height:1.6;
+  color:var(--parchment);
+  max-width:480px;
+}
+.card-answer{
+  font-family:'Cormorant Garamond',serif;
+  font-size:19px;
+  font-weight:400;
+  font-style:italic;
+  line-height:1.65;
+  color:var(--ink);
+  max-width:480px;
+}
+.hint{
+  font-size:10px;
+  font-weight:300;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  margin-top:1.75rem;
+  opacity:.4;
+}
+.front .hint{color:var(--parchment)}
+.back .hint{color:var(--ink)}
+
+/* ── Result buttons ── */
+.result-row{display:flex;gap:10px;margin-bottom:1.25rem}
+.result-btn{
+  flex:1;
+  padding:11px;
+  border-radius:2px;
+  border:1px solid rgba(201,169,110,.25);
+  background:transparent;
+  cursor:pointer;
+  font-family:'Inter',sans-serif;
+  font-size:11px;
+  font-weight:400;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  transition:all .15s;
+}
+.result-btn.wrong{color:#c0594e;border-color:#c0594e33}
+.result-btn.wrong:hover{background:rgba(192,89,78,.1);border-color:#c0594e}
+.result-btn.correct{color:#4a9e6e;border-color:#4a9e6e33}
+.result-btn.correct:hover{background:rgba(74,158,110,.1);border-color:#4a9e6e}
+
+/* ── Navigation ── */
+.nav-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom:2rem;
+}
+.nav-btn{
+  font-family:'Inter',sans-serif;
+  font-size:11px;
+  font-weight:400;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  padding:10px 24px;
+  border:1px solid rgba(168,121,58,.35);
+  border-radius:2px;
+  background:transparent;
+  color:var(--gold-light);
+  cursor:pointer;
+  transition:all .18s;
+}
+.nav-btn:hover{background:rgba(168,121,58,.1);border-color:var(--gold)}
+.nav-btn:disabled{opacity:.25;cursor:default}
+.nav-btn:disabled:hover{background:transparent;border-color:rgba(168,121,58,.35)}
+
+/* ── Stats ── */
+.stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  margin-top:.5rem;
+}
+.stat-card{
+  border:1px solid rgba(168,121,58,.2);
+  border-radius:2px;
+  padding:16px 12px;
+  text-align:center;
+  background:rgba(168,121,58,.06);
+  position:relative;
+  overflow:hidden;
+}
+.stat-card::before{
+  content:'';
+  position:absolute;
+  top:0;left:0;right:0;
+  height:1px;
+  background:linear-gradient(to right,transparent,rgba(168,121,58,.5),transparent);
+}
+.stat-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:28px;
+  font-weight:400;
+  color:var(--gold-light);
+  display:block;
+  line-height:1;
+  margin-bottom:6px;
+}
+.stat-label{
+  font-size:10px;
+  font-weight:300;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+
+/* ── Footer ornament ── */
+.footer-ornament{
+  text-align:center;
+  margin-top:2.5rem;
+  padding-top:2rem;
+  border-top:1px solid rgba(168,121,58,.18);
+}
+.footer-ornament svg{opacity:.35}
+
+@media(max-width:480px){
+  .card-question{font-size:17px}
+  .card-answer{font-size:16px}
+  body{padding:1.5rem .75rem 2rem}
+  .header h1{font-size:22px}
+}
+</style>
+</head>
+<body>
+
+<!-- Background SVG ornaments -->
+<svg class="bg-ornament top-left" viewBox="0 0 420 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="210" cy="210" r="200" stroke="#C9A96E" stroke-width=".8"/>
+  <circle cx="210" cy="210" r="160" stroke="#C9A96E" stroke-width=".5"/>
+  <circle cx="210" cy="210" r="120" stroke="#C9A96E" stroke-width=".4"/>
+  <line x1="10" y1="210" x2="410" y2="210" stroke="#C9A96E" stroke-width=".4"/>
+  <line x1="210" y1="10" x2="210" y2="410" stroke="#C9A96E" stroke-width=".4"/>
+  <line x1="68" y1="68" x2="352" y2="352" stroke="#C9A96E" stroke-width=".3"/>
+  <line x1="352" y1="68" x2="68" y2="352" stroke="#C9A96E" stroke-width=".3"/>
+  <polygon points="210,30 390,120 390,300 210,390 30,300 30,120" stroke="#C9A96E" stroke-width=".5" fill="none"/>
+</svg>
+
+<svg class="bg-ornament bottom-right" viewBox="0 0 420 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="210" cy="210" r="200" stroke="#C9A96E" stroke-width=".8"/>
+  <circle cx="210" cy="210" r="160" stroke="#C9A96E" stroke-width=".5"/>
+  <circle cx="210" cy="210" r="120" stroke="#C9A96E" stroke-width=".4"/>
+  <line x1="10" y1="210" x2="410" y2="210" stroke="#C9A96E" stroke-width=".4"/>
+  <line x1="210" y1="10" x2="210" y2="410" stroke="#C9A96E" stroke-width=".4"/>
+  <line x1="68" y1="68" x2="352" y2="352" stroke="#C9A96E" stroke-width=".3"/>
+  <line x1="352" y1="68" x2="68" y2="352" stroke="#C9A96E" stroke-width=".3"/>
+  <polygon points="210,30 390,120 390,300 210,390 30,300 30,120" stroke="#C9A96E" stroke-width=".5" fill="none"/>
+</svg>
+
+<svg class="bg-ornament center" viewBox="0 0 700 700" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="350" cy="350" r="340" stroke="#C9A96E" stroke-width="1"/>
+  <circle cx="350" cy="350" r="280" stroke="#C9A96E" stroke-width=".6"/>
+  <circle cx="350" cy="350" r="220" stroke="#C9A96E" stroke-width=".5"/>
+  <circle cx="350" cy="350" r="160" stroke="#C9A96E" stroke-width=".4"/>
+  <line x1="10" y1="350" x2="690" y2="350" stroke="#C9A96E" stroke-width=".5"/>
+  <line x1="350" y1="10" x2="350" y2="690" stroke="#C9A96E" stroke-width=".5"/>
+</svg>
+
+<div class="container">
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-ornament">
+      <div class="header-ornament-line"></div>
+      <svg width="20" height="28" viewBox="0 0 20 28" fill="none">
+        <rect x="8.5" y="0" width="3" height="28" fill="#C9A96E" opacity=".7"/>
+        <rect x="0" y="8" width="20" height="3" fill="#C9A96E" opacity=".7"/>
+      </svg>
+      <div class="header-ornament-line right"></div>
+    </div>
+    <h1>Calvinismo &amp; Arminianismo</h1>
+    <p>Estudo Comparativo · 80 Questões</p>
+  </header>
+
+  <!-- Meta row -->
+  <div class="meta-row">
+    <span class="counter" id="counter"></span>
+    <button class="shuffle-btn" onclick="shuffle()">⇄ Embaralhar</button>
+  </div>
+
+  <!-- Progress -->
+  <div class="progress-track"><div class="progress-fill" id="progress" style="width:0%"></div></div>
+
+  <!-- Filters -->
+  <div class="filter-row">
+    <button class="filter-btn active" onclick="setFilter('all',this)">Todos</button>
+    <button class="filter-btn" onclick="setFilter('cal',this)">Calvinismo</button>
+    <button class="filter-btn" onclick="setFilter('arm',this)">Arminianismo</button>
+    <button class="filter-btn" onclick="setFilter('ref',this)">Reforma</button>
+    <button class="filter-btn" onclick="setFilter('hist',this)">História</button>
+    <button class="filter-btn" onclick="setFilter('gen',this)">Geral</button>
+  </div>
+
+  <!-- Card -->
+  <div class="card-scene">
+    <div class="card-3d" id="card" onclick="flip()">
+
+      <div class="card-face front">
+        <span class="card-tag" id="tag-front"></span>
+        <p class="card-question" id="question"></p>
+        <p class="hint">Toque para revelar a resposta</p>
+      </div>
+
+      <div class="card-face back">
+        <!-- Watermark cross -->
+        <div class="card-watermark">
+          <svg width="140" height="180" viewBox="0 0 140 180" fill="none">
+            <rect x="60" y="0" width="20" height="180" fill="#1C1814"/>
+            <rect x="0" y="55" width="140" height="20" fill="#1C1814"/>
+          </svg>
+        </div>
+        <span class="card-tag" id="tag-back"></span>
+        <p class="card-answer" id="answer"></p>
+        <p class="hint">Como você foi?</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Result buttons -->
+  <div class="result-row" id="result-row" style="display:none">
+    <button class="result-btn wrong" onclick="markResult(false)">✕ &nbsp;Errei</button>
+    <button class="result-btn correct" onclick="markResult(true)">✓ &nbsp;Acertei</button>
+  </div>
+
+  <!-- Navigation -->
+  <div class="nav-row">
+    <button class="nav-btn" id="btn-prev" onclick="go(-1)" disabled>← Anterior</button>
+    <button class="nav-btn" id="btn-next" onclick="go(1)">Próximo →</button>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats">
+    <div class="stat-card">
+      <span class="stat-num" id="s-vistas">0</span>
+      <span class="stat-label">Vistas</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-num" id="s-certas" style="color:#2e7d54">0</span>
+      <span class="stat-label">Acertei</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-num" id="s-erradas" style="color:#b03a2e">0</span>
+      <span class="stat-label">Errei</span>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer-ornament">
+    <svg width="120" height="16" viewBox="0 0 120 16" fill="none">
+      <line x1="0" y1="8" x2="48" y2="8" stroke="#C9A96E" stroke-width=".8"/>
+      <circle cx="60" cy="8" r="4" stroke="#C9A96E" stroke-width=".8"/>
+      <line x1="72" y1="8" x2="120" y2="8" stroke="#C9A96E" stroke-width=".8"/>
+    </svg>
+  </div>
+
+</div>
+
+<script>
+const RAW=[
+["Quem foi o teólogo holandês que deu origem ao Arminianismo?","Jacobus Arminius (ou Jacó Armínio).","arm"],
+["Em qual país e século surgiu o Arminianismo como reação ao calvinismo estrito?","Nos Países Baixos (Holanda), no início do século XVII.","hist"],
+["Qual teólogo francês é o fundador da doutrina calvinista no século XVI?","João Calvino.","cal"],
+["Como é chamado o sistema teológico que enfatiza a soberania absoluta de Deus na salvação?","Calvinismo (ou Fé Reformada).","cal"],
+["O acróstico TULIP é utilizado para memorizar os cinco pontos de qual sistema teológico?","Calvinismo.","cal"],
+["No TULIP calvinista, o que significa a letra 'T'?","Depravação Total (Total Depravity).","cal"],
+["No TULIP calvinista, o que significa a letra 'U'?","Eleição Incondicional (Unconditional Election).","cal"],
+["No TULIP calvinista, o que significa a letra 'L'?","Expiação Limitada (Limited Atonement).","cal"],
+["No TULIP calvinista, o que significa a letra 'I'?","Graça Irresistível (Irresistible Grace).","cal"],
+["No TULIP calvinista, o que significa a letra 'P'?","Perseverança dos Santos (Perseverance of the Saints).","cal"],
+["Qual acróstico é associado aos cinco pontos do Arminianismo?","FACTS.","arm"],
+["No FACTS arminiano, o que significa a letra 'F'?","Libertado pela Graça para crer (Freed by Grace).","arm"],
+["No FACTS arminiano, o que significa a letra 'A'?","Expiação para todos (Atonement for all).","arm"],
+["No FACTS arminiano, o que significa a letra 'C'?","Eleição Condicional (Conditional Election).","arm"],
+["No FACTS arminiano, o que significa a letra 'T'?","Depravação Total (Total Depravity).","arm"],
+["No FACTS arminiano, o que significa a letra 'S'?","Segurança em Cristo (Security in Christ).","arm"],
+["O conceito de 'Graça Preveniente' no Arminianismo refere-se a quê?","À graça de Deus que antecede a fé e capacita o pecador a responder livremente ao Evangelho.","arm"],
+["De acordo com o Calvinismo, a 'Eleição Incondicional' baseia-se em quê?","Apenas na vontade soberana de Deus, sem considerar méritos ou fé prevista no homem.","cal"],
+["No Arminianismo, a 'Eleição Condicional' afirma que Deus escolhe os salvos com base em quê?","Na Sua presciência sobre quem responderá com fé ao chamado do Evangelho.","arm"],
+["Qual a diferença central entre 'Expiação Limitada' e 'Expiação Ilimitada'?","A limitada foca em salvar apenas os eleitos; a ilimitada afirma que Cristo morreu por toda a humanidade.","gen"],
+["O que ensina a doutrina da 'Graça Irresistível' no Calvinismo?","Que o chamado interno do Espírito Santo aos eleitos não pode ser rejeitado e resulta infalivelmente em conversão.","cal"],
+["A doutrina da 'Graça Resistível' no Arminianismo defende qual ideia?","Que o ser humano possui a liberdade de aceitar ou rejeitar a oferta de salvação de Deus.","arm"],
+["O que sustenta a doutrina da 'Perseverança dos Santos' no Calvinismo?","Que os verdadeiramente eleitos jamais perderão a salvação e permanecerão na fé até o fim.","cal"],
+["Qual é a posição clássica do Arminianismo sobre a segurança da salvação?","O crente pode cair da graça e perder a salvação se abandonar deliberadamente a fé em Cristo.","arm"],
+["Como o Arminianismo define a 'Depravação Total'?","O homem está morto em pecado e incapaz de buscar a Deus por si mesmo, dependendo da graça divina para crer.","arm"],
+["Qual assembleia eclesiástica (1618-1619) condenou o Arminianismo e formulou os 'Cânones de Dort'?","O Sínodo de Dort.","hist"],
+["Como eram chamados os seguidores de Armínio que apresentaram o documento de protesto em 1610?","Remonstrantes.","hist"],
+["O termo 'Monergismo' é comumente associado a qual visão da salvação?","À visão calvinista, onde a salvação é obra exclusiva de Deus.","cal"],
+["O termo 'Sinergismo' na soteriologia arminiana descreve qual relação?","A cooperação entre a graça iniciadora de Deus e a resposta livre do ser humano.","arm"],
+["Qual documento confessional de 1646 é a expressão doutrinária oficial do calvinismo presbiteriano?","Confissão de Fé de Westminster.","hist"],
+["Qual é o primeiro dos 'Cinco Solas' da Reforma Protestante?","Sola Scriptura (Somente a Escritura).","ref"],
+["O princípio 'Sola Fide' ensina que a justificação ocorre através de quê?","Somente pela fé em Jesus Cristo, sem o mérito de obras.","ref"],
+["O princípio 'Sola Gratia' afirma que a salvação é concedida como quê?","Um dom gratuito de Deus, imerecido pelo ser humano.","ref"],
+["O que defende o princípio 'Solus Christus'?","Que Jesus Cristo é o único mediador e caminho para a salvação entre Deus e os homens.","ref"],
+["Qual é o significado do princípio 'Soli Deo Gloria'?","Toda a glória deve ser dada somente a Deus.","ref"],
+["Segundo Max Weber, o Calvinismo influenciou o desenvolvimento de qual sistema econômico?","O Capitalismo.","cal"],
+["No Calvinismo, o sucesso material era frequentemente visto como o quê?","Indícios (não infalíveis) da eleição e bênção divina.","cal"],
+["Qual é a principal diferença entre Arminianismo e Semipelagianismo?","No Arminianismo, Deus inicia a salvação pela graça; no Semipelagianismo, o homem toma a primeira iniciativa.","gen"],
+["A ideia de que Deus sabe o que cada pessoa faria em qualquer circunstância possível é conhecida como?","Molinismo (ou Scientia Media).","gen"],
+["O Sínodo de Dort foi uma resposta direta a qual documento arminiano?","A Remonstrância de 1610.","hist"],
+["Qual denominação cristã é historicamente a maior herdeira da teologia de Calvino no Brasil?","Igreja Presbiteriana do Brasil.","hist"],
+["Qual líder do 'Avivamento Metodista' foi defensor proeminente da teologia arminiana?","John Wesley.","hist"],
+["Qual a obra fundamental de João Calvino publicada em 1536?","As Institutas da Religião Cristã.","hist"],
+["A doutrina da 'Dupla Predestinação' ensina o quê?","Que Deus predestinou ativamente alguns para a salvação e outros para a condenação.","cal"],
+["No calvinismo, o homem 'morto' espiritualmente é comparado a quê?","A alguém no fundo do mar que precisa ser resgatado e vivificado por inteiro.","cal"],
+["No arminianismo, qual analogia descreve a condição humana na 'Depravação Total'?","A de alguém que está se afogando e, auxiliado pela graça, consegue estender a mão para pedir socorro.","arm"],
+["Como o Arminianismo impactou as ideias democráticas modernas?","Ao enfatizar o livre-arbítrio e a responsabilidade individual, ressoando com princípios de igualdade e dignidade.","arm"],
+["Qual a distinção entre 'Eleitos' e 'Crentes' em algumas vertentes do Arminianismo?","Crentes podem cair da fé, mas Eleitos são aqueles que Deus previu que perseverariam até o fim.","arm"],
+["O termo 'Puritanos' foi aplicado aos calvinistas na Inglaterra por qual motivo?","Devido à sua defesa de uma vida moralmente pura e rigorosa.","hist"],
+["O que significa a expressão latina 'Ecclesia reformata, semper reformanda'?","Igreja reformada, sempre se reformando (submetendo-se à Escritura).","ref"],
+["Em qual cidade suíça João Calvino estabeleceu seu principal centro de pregação e reforma?","Genebra.","hist"],
+["Quem foi o sucessor de Calvino em Genebra e professor de Jacobus Arminius?","Theodore Beza.","hist"],
+["Qual teólogo foi o principal oponente de Arminius na Universidade de Leiden?","Franciscus Gomarus.","hist"],
+["O Sínodo de Dort foi convocado por qual igreja nacional?","Igreja Reformada Holandesa.","hist"],
+["O que é 'Graça Comum' no Calvinismo?","Graça estendida a todos os homens por meio da providência geral de Deus (ex: sol e chuva).","cal"],
+["No Calvinismo, a fé é contribuição humana ou dom de Deus?","Um dom de Deus (Efésios 2:8-9).","cal"],
+["Qual a visão arminiana sobre o desejo de Deus para a salvação da humanidade?","Deus deseja sinceramente que todos sejam salvos (1 Timóteo 2:4).","arm"],
+["Para o calvinismo, a morte de Cristo foi 'eficaz' para quem?","Somente para os eleitos.","cal"],
+["Segundo o Arminianismo, a expiação de Cristo é ilimitada em seu 'alcance', mas limitada em sua _____?","Eficácia (apenas para os que creem).","arm"],
+["O termo 'Apostasia' no contexto arminiano refere-se a quê?","Ao ato de um crente se afastar completamente da fé e rejeitar a Cristo deliberadamente.","arm"],
+["Como o Calvinismo vê a oração pela conversão de pecadores?","Como um meio ordenado por Deus, que age eficazmente no coração humano transformando a vontade.","cal"],
+["Qual é a base bíblica clássica para a 'Eleição Incondicional'?","Romanos 9:11-12 (o exemplo de Jacó e Esaú).","cal"],
+["Qual texto bíblico é frequentemente citado por arminianos para apoiar a 'Graça Preveniente'?","João 1:9 (a luz que ilumina a todo homem).","arm"],
+["Qual a visão de João Calvino sobre a utilidade das obras na salvação?","As obras não contribuem para a salvação; servem apenas como fruto da fé e para a glória de Deus.","cal"],
+["No Sínodo de Dort, quantos teólogos e delegados se reuniram?","84 teólogos e 13 delegados seculares.","hist"],
+["O Arminianismo influenciou fortemente qual tradição educacional nos EUA?","Escolas e universidades de tradição metodista.","hist"],
+["Qual é a diferença entre Calvinismo e Luteranismo quanto à salvação?","Luteranos veem fé e obras como caminho; Calvinistas veem a salvação como decreto consumado antes da criação.","gen"],
+["No Calvinismo, a 'Incapacidade Total' significa que o homem perdeu qual faculdade?","O livre-arbítrio para o bem espiritual (a vontade está escravizada pelo pecado).","cal"],
+["'Deus inspirou o desejo de fazer o bem apenas nos eleitos' resume qual visão?","A visão calvinista da regeneração.","cal"],
+["Quem sistematizou formalmente o Arminianismo após a morte de Armínio?","Simon Episcopius.","hist"],
+["O conceito de 'Justiça Divina' no Calvinismo afirma que Deus seria justo mesmo se _____?","Não salvasse ninguém (pois todos merecem condenação).","cal"],
+["O Calvinismo surgiu em qual ano e com qual autor?","Em 1536, com João Calvino.","hist"],
+["A flor tulipa é o símbolo de qual doutrina?","Calvinismo.","cal"],
+["Qual é a principal fonte de autoridade para ambas as vertentes?","A Bíblia (Escrituras Sagradas).","gen"],
+["O Arminianismo defende a soberania de Deus?","Sim, mas afirma que ela opera respeitando a liberdade humana de escolha dada por Ele.","arm"],
+["O que é Supralapsarismo?","A visão de que o decreto de Deus para eleição ocorreu antes do decreto de permitir a queda (rejeitado por Armínio).","cal"],
+["No Calvinismo, o arrependimento é obra de quem?","Inteiramente do Espírito Santo operando no eleito.","cal"],
+["Qual a visão calvinista sobre 'Expiação Eficaz'?","A cruz não tornou a salvação apenas possível, mas a garantiu efetivamente para os eleitos.","cal"],
+["Qual é a 'pergunta de fundo' no debate entre Calvinismo e Arminianismo?","Se a salvação é inteiramente obra de Deus ou se depende em algum grau da cooperação humana.","gen"],
+["O Arminianismo moderno (Teísmo Aberto) é visto como uma fraqueza de qual sistema?","Do sistema arminiano clássico levado ao extremo da autonomia humana.","arm"]
+];
+
+const TAG_LABELS={cal:'Calvinismo',arm:'Arminianismo',ref:'Reforma',hist:'História',gen:'Geral'};
+const TAG_CSS={cal:'tag-cal',arm:'tag-arm',ref:'tag-ref',hist:'tag-hist',gen:'tag-gen'};
+
+let deck=[],idx=0,isFlipped=false;
+let results={correct:0,wrong:0,seen:new Set()};
+
+function shuffle(){
+  for(let i=deck.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[deck[i],deck[j]]=[deck[j],deck[i]];}
+  idx=0;results={correct:0,wrong:0,seen:new Set()};isFlipped=false;
+  document.getElementById('card').classList.remove('flipped');
+  document.getElementById('result-row').style.display='none';
+  render();
+}
+
+function setFilter(f,btn){
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  deck=f==='all'?[...RAW]:RAW.filter(c=>c[2]===f);
+  idx=0;results={correct:0,wrong:0,seen:new Set()};isFlipped=false;
+  document.getElementById('card').classList.remove('flipped');
+  document.getElementById('result-row').style.display='none';
+  render();
+}
+
+function render(){
+  if(!deck.length){document.getElementById('question').textContent='Nenhuma carta nesta categoria.';return;}
+  const c=deck[idx];
+  document.getElementById('question').textContent=c[0];
+  document.getElementById('answer').textContent=c[1];
+  const tagClass='card-tag '+TAG_CSS[c[2]];
+  document.getElementById('tag-front').textContent=TAG_LABELS[c[2]];
+  document.getElementById('tag-front').className=tagClass;
+  document.getElementById('tag-back').textContent=TAG_LABELS[c[2]];
+  document.getElementById('tag-back').className='card-tag';
+  document.getElementById('counter').textContent=(idx+1)+' de '+deck.length+' cartas';
+  document.getElementById('progress').style.width=(((idx+1)/deck.length)*100)+'%';
+  document.getElementById('btn-prev').disabled=idx===0;
+  document.getElementById('btn-next').disabled=idx===deck.length-1;
+  document.getElementById('s-vistas').textContent=results.seen.size;
+  document.getElementById('s-certas').textContent=results.correct;
+  document.getElementById('s-erradas').textContent=results.wrong;
+}
+
+function flip(){
+  isFlipped=!isFlipped;
+  document.getElementById('card').classList.toggle('flipped',isFlipped);
+  document.getElementById('result-row').style.display=isFlipped?'flex':'none';
+  if(isFlipped)results.seen.add(idx);
+  render();
+}
+
+function markResult(ok){
+  if(ok)results.correct++;else results.wrong++;
+  go(1);
+}
+
+function go(dir){
+  idx=Math.max(0,Math.min(deck.length-1,idx+dir));
+  isFlipped=false;
+  document.getElementById('card').classList.remove('flipped');
+  document.getElementById('result-row').style.display='none';
+  render();
+}
+
+deck=[...RAW];shuffle();
+</script>
+</body>
+</html>

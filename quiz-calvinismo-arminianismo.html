@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz — Calvinismo & Arminianismo</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap');
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --ink:#1C1814;
+  --gold:#A8793A;
+  --gold-light:#7A5520;
+  --gold-dim:#C9A96E;
+  --parchment:#F2ECD9;
+  --parchment-dark:#E8DEC8;
+  --cream:#FAF7F0;
+  --muted:#9A8A72;
+  --border:#C9A96E;
+  --green:#2e7d54;
+  --red:#b03a2e;
+}
+
+body{
+  font-family:'Inter',sans-serif;
+  background:var(--parchment);
+  color:var(--ink);
+  min-height:100vh;
+  padding:2.5rem 1rem 3rem;
+  position:relative;
+  overflow-x:hidden;
+}
+
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 0%, #EDE4CC 0%, transparent 70%),
+    radial-gradient(ellipse 60% 40% at 0% 100%, #E8DEC8 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 100% 100%, #E8DEC8 0%, transparent 60%);
+  pointer-events:none;
+  z-index:0;
+}
+
+.bg-ornament{position:fixed;pointer-events:none;z-index:0;opacity:.08}
+.bg-ornament.top-left{top:-60px;left:-60px;width:420px;height:420px}
+.bg-ornament.bottom-right{bottom:-60px;right:-60px;width:420px;height:420px;transform:rotate(180deg)}
+.bg-ornament.center{top:50%;left:50%;transform:translate(-50%,-50%);width:700px;height:700px;opacity:.04}
+
+.container{max-width:640px;margin:0 auto;position:relative;z-index:1}
+
+/* ── Header ── */
+.header{text-align:center;margin-bottom:2.5rem;padding-bottom:2rem;border-bottom:1px solid rgba(168,121,58,.25)}
+.header-ornament{display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:1.25rem}
+.header-ornament-line{flex:1;max-width:80px;height:1px;background:linear-gradient(to right,transparent,var(--gold))}
+.header-ornament-line.right{background:linear-gradient(to left,transparent,var(--gold))}
+.header h1{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:400;letter-spacing:.12em;color:var(--ink);text-transform:uppercase;margin-bottom:6px}
+.header p{font-size:12px;font-weight:300;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+
+/* ── Meta / Progress ── */
+.meta-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem}
+.counter{font-size:12px;color:var(--muted);letter-spacing:.05em;font-weight:300}
+.progress-track{height:1px;background:rgba(168,121,58,.2);margin-bottom:2rem;position:relative}
+.progress-fill{height:100%;background:var(--gold);transition:width .4s ease;position:relative}
+.progress-fill::after{content:'';position:absolute;right:-3px;top:-3px;width:7px;height:7px;background:var(--gold);border-radius:50%}
+
+/* ── Question card ── */
+.q-scene{margin-bottom:1.5rem}
+.q-card{
+  background:var(--ink);
+  border:1px solid rgba(201,169,110,.3);
+  border-radius:3px;
+  box-shadow:0 0 0 4px rgba(168,121,58,.06), inset 0 0 60px rgba(201,169,110,.03);
+  padding:2.5rem 2rem;
+  position:relative;
+  overflow:hidden;
+  min-height:300px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+.q-card::before,.q-card::after{
+  content:'';position:absolute;width:48px;height:48px;
+  border-color:rgba(201,169,110,.35);border-style:solid;
+}
+.q-card::before{top:14px;left:14px;border-width:1px 0 0 1px}
+.q-card::after{bottom:14px;right:14px;border-width:0 1px 1px 0}
+
+.q-number{
+  font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--gold-dim);margin-bottom:1.25rem;
+}
+.q-text{
+  font-family:'Cormorant Garamond',serif;
+  font-size:20px;font-weight:400;line-height:1.55;
+  color:var(--parchment);margin-bottom:1.75rem;
+}
+
+.options{display:flex;flex-direction:column;gap:10px}
+.option{
+  display:flex;align-items:center;gap:12px;
+  padding:13px 16px;
+  border:1px solid rgba(201,169,110,.25);
+  border-radius:2px;
+  background:rgba(201,169,110,.04);
+  cursor:pointer;
+  transition:all .15s;
+  text-align:left;
+}
+.option:hover{background:rgba(201,169,110,.1);border-color:rgba(201,169,110,.5)}
+.option.selected{background:rgba(201,169,110,.16);border-color:var(--gold-dim)}
+.option-letter{
+  font-family:'Cormorant Garamond',serif;
+  font-size:15px;font-weight:500;color:var(--gold-dim);
+  width:22px;height:22px;border:1px solid var(--gold-dim);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.option.selected .option-letter{background:var(--gold-dim);color:var(--ink)}
+.option-text{font-size:14px;color:var(--parchment);line-height:1.45;font-weight:300}
+
+/* ── Navigation ── */
+.nav-row{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.nav-btn{
+  font-family:'Inter',sans-serif;font-size:11px;font-weight:400;letter-spacing:.1em;text-transform:uppercase;
+  padding:10px 24px;border:1px solid rgba(168,121,58,.35);border-radius:2px;
+  background:transparent;color:var(--gold-light);cursor:pointer;transition:all .18s;
+}
+.nav-btn:hover{background:rgba(168,121,58,.1);border-color:var(--gold)}
+.nav-btn:disabled{opacity:.25;cursor:default}
+.nav-btn:disabled:hover{background:transparent;border-color:rgba(168,121,58,.35)}
+.nav-btn.submit{border-color:var(--gold);color:var(--gold-light);font-weight:500}
+.nav-btn.submit:hover{background:rgba(168,121,58,.15)}
+
+/* ── Results screen ── */
+.results{display:none;text-align:center}
+.results.show{display:block}
+.score-ring{
+  width:160px;height:160px;margin:0 auto 1.5rem;position:relative;
+  display:flex;align-items:center;justify-content:center;
+}
+.score-num{font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:400;color:var(--ink)}
+.score-label{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+.score-message{
+  font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;
+  color:var(--gold-light);margin:1.5rem 0 2rem;line-height:1.5;
+}
+.review-list{text-align:left;margin-top:2rem;display:flex;flex-direction:column;gap:10px}
+.review-item{
+  border:1px solid rgba(168,121,58,.2);border-radius:2px;padding:16px;
+  background:rgba(168,121,58,.04);
+}
+.review-q{font-size:13px;color:var(--ink);margin-bottom:8px;line-height:1.5;font-weight:500}
+.review-answer{font-size:12px;line-height:1.5}
+.review-answer.correct{color:var(--green)}
+.review-answer.wrong{color:var(--red)}
+.review-correct-note{font-size:12px;color:var(--muted);margin-top:4px}
+.retry-btn{
+  font-family:'Inter',sans-serif;font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;
+  padding:11px 28px;border:1px solid var(--gold);border-radius:2px;background:transparent;
+  color:var(--gold-light);cursor:pointer;margin-top:2rem;transition:all .18s;
+}
+.retry-btn:hover{background:rgba(168,121,58,.12)}
+
+.footer-ornament{text-align:center;margin-top:2.5rem;padding-top:2rem;border-top:1px solid rgba(168,121,58,.18)}
+.footer-ornament svg{opacity:.35}
+
+@media(max-width:480px){
+  .q-text{font-size:17px}
+  .option-text{font-size:13px}
+  body{padding:1.5rem .75rem 2rem}
+  .header h1{font-size:22px}
+}
+</style>
+</head>
+<body>
+
+<svg class="bg-ornament top-left" viewBox="0 0 420 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="210" cy="210" r="200" stroke="#A8793A" stroke-width=".8"/>
+  <circle cx="210" cy="210" r="160" stroke="#A8793A" stroke-width=".5"/>
+  <circle cx="210" cy="210" r="120" stroke="#A8793A" stroke-width=".4"/>
+  <line x1="10" y1="210" x2="410" y2="210" stroke="#A8793A" stroke-width=".4"/>
+  <line x1="210" y1="10" x2="210" y2="410" stroke="#A8793A" stroke-width=".4"/>
+  <polygon points="210,30 390,120 390,300 210,390 30,300 30,120" stroke="#A8793A" stroke-width=".5" fill="none"/>
+</svg>
+<svg class="bg-ornament bottom-right" viewBox="0 0 420 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="210" cy="210" r="200" stroke="#A8793A" stroke-width=".8"/>
+  <circle cx="210" cy="210" r="160" stroke="#A8793A" stroke-width=".5"/>
+  <circle cx="210" cy="210" r="120" stroke="#A8793A" stroke-width=".4"/>
+  <line x1="10" y1="210" x2="410" y2="210" stroke="#A8793A" stroke-width=".4"/>
+  <line x1="210" y1="10" x2="210" y2="410" stroke="#A8793A" stroke-width=".4"/>
+  <polygon points="210,30 390,120 390,300 210,390 30,300 30,120" stroke="#A8793A" stroke-width=".5" fill="none"/>
+</svg>
+<svg class="bg-ornament center" viewBox="0 0 700 700" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="350" cy="350" r="340" stroke="#A8793A" stroke-width="1"/>
+  <circle cx="350" cy="350" r="280" stroke="#A8793A" stroke-width=".6"/>
+  <circle cx="350" cy="350" r="220" stroke="#A8793A" stroke-width=".5"/>
+  <line x1="10" y1="350" x2="690" y2="350" stroke="#A8793A" stroke-width=".5"/>
+  <line x1="350" y1="10" x2="350" y2="690" stroke="#A8793A" stroke-width=".5"/>
+</svg>
+
+<div class="container">
+
+  <header class="header">
+    <div class="header-ornament">
+      <div class="header-ornament-line"></div>
+      <svg width="20" height="28" viewBox="0 0 20 28" fill="none">
+        <rect x="8.5" y="0" width="3" height="28" fill="#A8793A" opacity=".7"/>
+        <rect x="0" y="8" width="20" height="3" fill="#A8793A" opacity=".7"/>
+      </svg>
+      <div class="header-ornament-line right"></div>
+    </div>
+    <h1>Calvinismo &amp; Arminianismo</h1>
+    <p>Quiz de Avaliação · 20 Questões</p>
+  </header>
+
+  <div id="quiz-screen">
+    <div class="meta-row">
+      <span class="counter" id="counter"></span>
+      <span class="counter" id="answered-counter"></span>
+    </div>
+    <div class="progress-track"><div class="progress-fill" id="progress" style="width:0%"></div></div>
+
+    <div class="q-scene">
+      <div class="q-card">
+        <div class="q-number" id="q-number"></div>
+        <p class="q-text" id="q-text"></p>
+        <div class="options" id="options"></div>
+      </div>
+    </div>
+
+    <div class="nav-row">
+      <button class="nav-btn" id="btn-prev" onclick="go(-1)" disabled>← Anterior</button>
+      <button class="nav-btn" id="btn-next" onclick="go(1)">Próximo →</button>
+    </div>
+    <div style="text-align:center;margin-top:1.5rem">
+      <button class="nav-btn submit" id="btn-submit" onclick="submitQuiz()" style="display:none">Finalizar e ver resultado</button>
+    </div>
+  </div>
+
+  <div class="results" id="results-screen">
+    <div class="score-ring">
+      <div>
+        <div class="score-num" id="score-num">0/20</div>
+        <div class="score-label">Acertos</div>
+      </div>
+    </div>
+    <p class="score-message" id="score-message"></p>
+    <div class="review-list" id="review-list"></div>
+    <button class="retry-btn" onclick="resetQuiz()">↻ Refazer o quiz</button>
+  </div>
+
+  <div class="footer-ornament">
+    <svg width="120" height="16" viewBox="0 0 120 16" fill="none">
+      <line x1="0" y1="8" x2="48" y2="8" stroke="#A8793A" stroke-width=".8"/>
+      <circle cx="60" cy="8" r="4" stroke="#A8793A" stroke-width=".8"/>
+      <line x1="72" y1="8" x2="120" y2="8" stroke="#A8793A" stroke-width=".8"/>
+    </svg>
+  </div>
+
+</div>
+
+<script>
+const QUESTIONS=[
+{q:"Qual é a principal obra teológica escrita por João Calvino, que serviu como base para a sistematização do calvinismo?",opts:["Institutas da Religião Cristã","Os Cânones de Dort","A Ética Protestante","A Remonstrância"],correct:0},
+{q:"Sob a orientação de qual sucessor de João Calvino estudou Jacó Armínio na cidade de Genebra?",opts:["Teodoro de Beza","John Knox","Franciscus Gomarus","Martinho Lutero"],correct:0},
+{q:"O que defende o conceito de 'Depravação Total' dentro da perspectiva calvinista clássica?",opts:["O ser humano é incapaz de buscar a Deus por sua própria vontade","O pecado afetou apenas a mente, mas não a vontade do homem","O homem é inerentemente bom, mas corrompido pela sociedade","A natureza humana foi apenas parcialmente afetada pela queda"],correct:0},
+{q:"Na teologia arminiana, o que define a 'Eleição Condicional'?",opts:["Deus elege pessoas baseando-se em suas obras de caridade","A eleição é garantida a todos os seres humanos, sem exceção","Deus elege baseando-se na presciência de quem exercerá fé","Deus escolhe indivíduos aleatoriamente para demonstrar poder"],correct:2},
+{q:"Qual sínodo histórico, ocorrido entre 1618 e 1619, condenou as ideias arminianas e formulou os Cinco Pontos do Calvinismo?",opts:["Concílio de Trento","Dieta de Worms","Sínodo de Dort","Sínodo de Orange"],correct:2},
+{q:"O que diferencia a 'Expiação Limitada' (calvinista) da 'Expiação Ilimitada' (arminiana)?",opts:["O local geográfico onde a salvação é aplicada","O objetivo e a abrangência da eficácia da morte de Cristo","A crença se Jesus era realmente o filho de Deus","A necessidade ou não do sacrifício de sangue"],correct:1},
+{q:"Como a 'Graça Preveniente' atua no sistema arminiano para possibilitar a salvação?",opts:["Ela garante que o indivíduo nunca mais cometa pecados","Ela capacita a vontade humana a aceitar ou rejeitar o chamado de Deus","Ela é concedida apenas àqueles que já realizaram boas obras","Ela força o indivíduo a ser salvo contra a sua vontade"],correct:1},
+{q:"Qual é a posição calvinista sobre a 'Graça Irresistível'?",opts:["Quando Deus chama um eleito, ele inevitavelmente responderá com fé","A graça é tão bela que ninguém jamais desejaria recusá-la","A graça só é irresistível para aqueles que já são anjos","O ser humano pode recusar a graça se for suficientemente forte"],correct:0},
+{q:"No debate sobre a 'Perseverança dos Santos', o que defende a vertente arminiana clássica?",opts:["É possível que um crente caia da graça e perca a salvação","Apenas os pastores e líderes têm a garantia de não cair","Deus remove o livre-arbítrio após a conversão para evitar a queda","Uma vez salvo, o indivíduo está garantido independentemente do que faça"],correct:0},
+{q:"Qual sociólogo famoso associou o calvinismo ao desenvolvimento do capitalismo moderno?",opts:["Karl Marx","Teodoro de Beza","Max Weber","Jacobus Arminius"],correct:2},
+{q:"O termo 'Remonstrantes' refere-se a qual grupo no contexto das disputas teológicas holandesas?",opts:["Tradutores da Bíblia para o holandês","Defensores estritos de João Calvino","Soldados mercenários da Guerra dos Trinta Anos","Seguidores de Jacó Armínio"],correct:3},
+{q:"Por que o calvinismo foi bem recebido pela burguesia europeia do século XVI?",opts:["Porque a igreja calvinista não cobrava dízimos ou ofertas","Porque valorizava o trabalho, a poupança e não condenava o lucro","Porque Calvino prometia cargos políticos a todos os comerciantes","Porque permitia a manutenção de ídolos e imagens de ouro"],correct:1},
+{q:"Qual é a principal diferença entre calvinismo e luteranismo no que diz respeito à salvação?",opts:["Não há nenhuma diferença, pois ambos seguem as 95 teses","O luteranismo acredita em Maria como mediadora, o calvinismo não","O calvinismo mantém o Papa como líder, o luteranismo não","O calvinismo foca na predestinação, enquanto o luteranismo enfatiza a fé e obras"],correct:3},
+{q:"Quem foi o professor que se opôs ferozmente a Jacó Armínio na Universidade de Leiden?",opts:["Franciscus Gomarus","Nicolau Cop","Uldrico Zuínglio","Teodoro de Beza"],correct:0},
+{q:"O que o acróstico 'FACTS' representa na teologia arminiana?",opts:["As cinco cidades onde Armínio pregou durante sua vida","Os nomes dos cinco filhos de Jacó Armínio","O lema do governo holandês durante o Sínodo de Dort","Os cinco pontos que contrastam com o TULIP calvinista"],correct:3},
+{q:"De acordo com o material, qual foi o impacto do calvinismo na administração da cidade de Genebra?",opts:["A abolição total de todas as leis civis em favor da liberdade absoluta","A transformação da cidade em um centro de festas e teatros populares","A imposição de hábitos austeros e punições severas para transgressões morais","O retorno da cidade à submissão direta ao Papa em Roma"],correct:2},
+{q:"Qual é a visão arminiana sobre a abrangência da morte de Cristo (Expiação)?",opts:["Cristo morreu por todos, mas a eficácia é limitada aos que creem","A morte de Cristo automaticamente salva todos os seres humanos (Universalismo)","Cristo morreu apenas para servir de exemplo moral, sem pagar pecados","Cristo morreu apenas por uma elite espiritual escolhida"],correct:0},
+{q:"O que significa 'Perseverança dos Santos' no contexto do TULIP calvinista?",opts:["Apenas as pessoas que morrem como mártires são salvas","Os eleitos por Deus jamais perderão a sua salvação","Os crentes devem jejuar todos os dias para não serem condenados","Os santos católicos devem ser venerados para garantir a ida ao céu"],correct:1},
+{q:"Em qual país europeu as disputas entre calvinistas e arminianos atingiram seu auge político e religioso no século XVII?",opts:["Holanda (Países Baixos)","França","Espanha","Itália"],correct:0},
+{q:"De acordo com a teologia arminiana, por que os seres humanos são moralmente responsáveis por suas decisões?",opts:["Porque Deus os obriga a escolher o mal para depois puni-los","Porque as leis civis são mais importantes que as leis divinas","Porque o pecado original não afetou a vontade humana de forma alguma","Porque possuem livre-arbítrio para aceitar ou rejeitar a graça"],correct:3}
+];
+
+const LETTERS=['A','B','C','D'];
+let idx=0;
+let answers=new Array(QUESTIONS.length).fill(null);
+
+function renderQuestion(){
+  const q=QUESTIONS[idx];
+  document.getElementById('q-number').textContent='Questão '+(idx+1)+' de '+QUESTIONS.length;
+  document.getElementById('q-text').textContent=q.q;
+  document.getElementById('counter').textContent=(idx+1)+' de '+QUESTIONS.length;
+  const answeredCount=answers.filter(a=>a!==null).length;
+  document.getElementById('answered-counter').textContent=answeredCount+' respondidas';
+  document.getElementById('progress').style.width=(((idx+1)/QUESTIONS.length)*100)+'%';
+
+  const optsHtml=q.opts.map((opt,i)=>{
+    const sel=answers[idx]===i?'selected':'';
+    return '<div class="option '+sel+'" onclick="selectAnswer('+i+')">'+
+      '<span class="option-letter">'+LETTERS[i]+'</span>'+
+      '<span class="option-text">'+opt+'</span></div>';
+  }).join('');
+  document.getElementById('options').innerHTML=optsHtml;
+
+  document.getElementById('btn-prev').disabled=idx===0;
+  const isLast=idx===QUESTIONS.length-1;
+  document.getElementById('btn-next').style.display=isLast?'none':'inline-block';
+  document.getElementById('btn-submit').style.display=isLast?'inline-block':'none';
+}
+
+function selectAnswer(i){
+  answers[idx]=i;
+  renderQuestion();
+}
+
+function go(dir){
+  idx=Math.max(0,Math.min(QUESTIONS.length-1,idx+dir));
+  renderQuestion();
+}
+
+function submitQuiz(){
+  const unanswered=answers.filter(a=>a===null).length;
+  if(unanswered>0){
+    if(!confirm(unanswered+' questão(ões) sem resposta. Deseja finalizar mesmo assim?')) return;
+  }
+  let correctCount=0;
+  let reviewHtml='';
+  QUESTIONS.forEach((q,i)=>{
+    const userAns=answers[i];
+    const isCorrect=userAns===q.correct;
+    if(isCorrect)correctCount++;
+    const userAnsText=userAns!==null?LETTERS[userAns]+'. '+q.opts[userAns]:'Não respondida';
+    const correctAnsText=LETTERS[q.correct]+'. '+q.opts[q.correct];
+    reviewHtml+='<div class="review-item">';
+    reviewHtml+='<div class="review-q">'+(i+1)+'. '+q.q+'</div>';
+    reviewHtml+='<div class="review-answer '+(isCorrect?'correct':'wrong')+'">'+(isCorrect?'✓':'✕')+' Sua resposta: '+userAnsText+'</div>';
+    if(!isCorrect)reviewHtml+='<div class="review-correct-note">Resposta correta: '+correctAnsText+'</div>';
+    reviewHtml+='</div>';
+  });
+
+  document.getElementById('score-num').textContent=correctCount+'/'+QUESTIONS.length;
+  const pct=Math.round((correctCount/QUESTIONS.length)*100);
+  let msg='';
+  if(pct>=90) msg='Domínio excepcional da matéria. Erudição notável.';
+  else if(pct>=70) msg='Sólido conhecimento teológico. Poucos pontos a revisar.';
+  else if(pct>=50) msg='Fundamentos presentes, mas há lacunas a estudar.';
+  else msg='Recomenda-se revisão cuidadosa dos conceitos centrais.';
+  document.getElementById('score-message').textContent=msg+' ('+pct+'%)';
+  document.getElementById('review-list').innerHTML=reviewHtml;
+
+  document.getElementById('quiz-screen').style.display='none';
+  document.getElementById('results-screen').classList.add('show');
+  window.scrollTo(0,0);
+}
+
+function resetQuiz(){
+  idx=0;
+  answers=new Array(QUESTIONS.length).fill(null);
+  document.getElementById('quiz-screen').style.display='block';
+  document.getElementById('results-screen').classList.remove('show');
+  renderQuestion();
+  window.scrollTo(0,0);
+}
+
+renderQuestion();
+</script>
+</body>
+</html>
