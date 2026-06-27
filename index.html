@@ -118,19 +118,29 @@ body {
   display: block;
   transform: scale(1.04);
   transform-origin: top center;
-  filter: blur(3px);
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 22%, black 100%);
-  mask-image: linear-gradient(to bottom, transparent 0%, black 22%, black 100%);
+  filter: blur(0px);
 }
 
-/* fade inferior - esconde conteudo, so topo visivel */
+/* camada de blur sobre tudo exceto o topo */
+.print-card::before {
+  content: '';
+  position: absolute;
+  top: 22%; left: 0; right: 0; bottom: 0;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* fade inferior */
 .print-card::after {
   content: '';
   position: absolute;
   bottom: 0; left: 0; right: 0;
   height: 55%;
-  background: linear-gradient(to top, var(--parch) 50%, transparent 100%);
+  background: linear-gradient(to top, var(--parch) 30%, transparent 100%);
   pointer-events: none;
+  z-index: 2;
 }
 
 .print-label {
@@ -190,9 +200,17 @@ body {
   display: block;
   transform: scale(1.05);
   transform-origin: top center;
-  filter: blur(3px);
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 22%, black 100%);
-  mask-image: linear-gradient(to bottom, transparent 0%, black 22%, black 100%);
+  filter: blur(0px);
+}
+
+.print-card-bonus::before {
+  content: '';
+  position: absolute;
+  top: 22%; left: 0; right: 0; bottom: 0;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 1;
+  pointer-events: none;
 }
 
 .print-card-bonus::after {
@@ -200,8 +218,9 @@ body {
   position: absolute;
   bottom: 0; left: 0; right: 0;
   height: 50%;
-  background: linear-gradient(to top, var(--parch) 50%, transparent 100%);
+  background: linear-gradient(to top, var(--parch) 40%, transparent 100%);
   pointer-events: none;
+  z-index: 2;
 }
 
 .bonus-lock {
