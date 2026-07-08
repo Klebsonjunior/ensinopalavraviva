@@ -490,9 +490,80 @@ body {
 .faq-a { max-height: 0; overflow: hidden; transition: max-height .25s ease; }
 .faq-item.open .faq-a { max-height: 200px; }
 .faq-a-inner { padding: 0 22px 20px; font-size: 16.3px; color: var(--ink-mid); line-height: 1.65; }
+
+/* URGENCY MARQUEE */
+.urgency-marquee {
+  position: sticky; top: 0; z-index: 50;
+  background: var(--arm);
+  overflow: hidden;
+  white-space: nowrap;
+  border-bottom: 1px solid rgba(0,0,0,0.15);
+}
+.urgency-marquee-track {
+  display: inline-flex;
+  animation: marquee-scroll 18s linear infinite;
+}
+.urgency-marquee-track span {
+  display: inline-flex;
+  align-items: center;
+  font-size: 12.8px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #FAF8F3;
+  padding: 9px 32px;
+  white-space: nowrap;
+}
+.urgency-marquee-track span::before {
+  content: '';
+  display: inline-block;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--gold-line);
+  margin-right: 12px;
+}
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .urgency-marquee-track { animation: none; }
+}
+
+/* COMO FOI FEITO */
+.how-made {
+  padding: 56px 0 64px;
+  border-top: 1px solid var(--border);
+  background: var(--parch);
+}
+.how-made .wrap { max-width: 600px; text-align: center; }
+.how-made h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(24px, 4vw, 30px);
+  font-weight: 700; color: var(--ink);
+  margin-bottom: 20px;
+}
+.how-made p {
+  font-size: 16.3px; color: var(--ink-mid);
+  line-height: 1.75; margin-bottom: 14px;
+}
+.how-made p:last-child { margin-bottom: 0; }
 </style>
 </head>
 <body>
+
+<div class="urgency-marquee">
+  <div class="urgency-marquee-track">
+    <span>Oferta por tempo limitado</span>
+    <span>Oferta por tempo limitado</span>
+    <span>Oferta por tempo limitado</span>
+    <span>Oferta por tempo limitado</span>
+    <span>Oferta por tempo limitado</span>
+    <span>Oferta por tempo limitado</span>
+    <span>Oferta por tempo limitado</span>
+    <span>Oferta por tempo limitado</span>
+  </div>
+</div>
 
 <svg class="bg-deco top-left" viewBox="0 0 300 300" fill="none"><circle cx="150" cy="150" r="140" stroke="currentColor" stroke-width="1"/><circle cx="150" cy="150" r="105" stroke="currentColor" stroke-width="0.6"/><circle cx="150" cy="150" r="70" stroke="currentColor" stroke-width="0.5"/><line x1="10" y1="150" x2="290" y2="150" stroke="currentColor" stroke-width="0.4"/><line x1="150" y1="10" x2="150" y2="290" stroke="currentColor" stroke-width="0.4"/><path d="M150 80 L160 140 L220 150 L160 160 L150 220 L140 160 L80 150 L140 140 Z" stroke="currentColor" stroke-width="0.6" fill="none"/></svg>
 <svg class="bg-deco bottom-right" viewBox="0 0 300 300" fill="none"><circle cx="150" cy="150" r="140" stroke="currentColor" stroke-width="1"/><circle cx="150" cy="150" r="105" stroke="currentColor" stroke-width="0.6"/><circle cx="150" cy="150" r="70" stroke="currentColor" stroke-width="0.5"/><line x1="10" y1="150" x2="290" y2="150" stroke="currentColor" stroke-width="0.4"/><line x1="150" y1="10" x2="150" y2="290" stroke="currentColor" stroke-width="0.4"/><path d="M150 80 L160 140 L220 150 L160 160 L150 220 L140 160 L80 150 L140 140 Z" stroke="currentColor" stroke-width="0.6" fill="none"/></svg>
@@ -773,6 +844,15 @@ body {
       </div>
 
     </div>
+  </div>
+</section>
+
+<!-- COMO FOI FEITO -->
+<section class="how-made">
+  <div class="wrap">
+    <h2>Como este material foi construído</h2>
+    <p>Este conteúdo não nasceu de opinião pessoal nem de resumo apressado de internet. Cada ponto foi construído a partir de leitura teológica séria — livros de referência sobre o tema, materiais de estudo usados por quem já debruçou anos sobre essas questões, e comparação entre diferentes perspectivas antes de chegar a uma explicação clara e justa para ambos os lados.</p>
+    <p>O objetivo aqui não foi "vencer um debate", mas entregar pra você um material que resista a pergunta difícil, com honestidade sobre onde cada posição é forte e onde ela é discutível. Não é teologia de rede social. É estudo.</p>
   </div>
 </section>
 
