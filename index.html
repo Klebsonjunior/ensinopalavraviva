@@ -251,7 +251,31 @@ body {
   .prints-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
   .prints-grid .print-card:last-child { display: none; }
   .prints-bonus-grid { grid-template-columns: 1fr 1fr; }
+  .prints-premium-grid { grid-template-columns: 1fr 1fr; }
 }
+
+/* PRINTS PREMIUM (amostra do bonus R$22,90) */
+.prints-premium { margin: 0 auto 36px; max-width: 640px; }
+.prints-premium-label {
+  font-size: 12.2px; font-weight: 700; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--gold-mid);
+  margin-bottom: 6px; text-align: left; padding-left: 2px;
+  display: flex; align-items: center; gap: 8px;
+}
+.prints-premium-label span {
+  background: var(--gold-pale); border: 1px solid var(--gold-line);
+  font-size: 9.2px; padding: 2px 8px; letter-spacing: 0.12em;
+}
+.prints-premium-sub {
+  font-size: 12.8px; color: var(--ink-light); margin-bottom: 12px; padding-left: 2px;
+}
+.prints-premium-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.print-card-premium {
+  position: relative; border: 1px solid var(--gold-line);
+  overflow: hidden; box-shadow: 0 10px 24px -8px rgba(26,23,17,0.2);
+  background: var(--parch); aspect-ratio: 4/3;
+}
+.print-card-premium img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
 
 /* CTA HERO */
 .hero-cta-stack {
@@ -596,6 +620,28 @@ body {
         <div class="print-card">
           <img src="assets/prints/print_historico.png" alt="Infográfico fé e doutrina">
           <div class="print-label"><span>Fé e doutrina</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PRINTS PREMIUM: amostra de um dos bonus do kit R$22,90 -->
+    <div class="prints-premium">
+      <p class="prints-premium-label">
+        Amostra de um dos bônus <span>Pacote R$22,90</span>
+      </p>
+      <p class="prints-premium-sub">Páginas de "O Grande Debate Soteriológico" — um dos 3 e-books extras do kit completo.</p>
+      <div class="prints-premium-grid">
+        <div class="print-card-premium">
+          <img src="assets/prints/premium/premium_1_capa.webp" alt="Capa: O Grande Debate Soteriológico">
+        </div>
+        <div class="print-card-premium">
+          <img src="assets/prints/premium/premium_2_titulo.webp" alt="Página de título do e-book">
+        </div>
+        <div class="print-card-premium">
+          <img src="assets/prints/premium/premium_3_biografias.webp" alt="Biografias de Calvino e Arminius">
+        </div>
+        <div class="print-card-premium">
+          <img src="assets/prints/premium/premium_4_linhadotempo.webp" alt="Linha do tempo histórica">
         </div>
       </div>
     </div>
