@@ -193,19 +193,16 @@ body {
   overflow: hidden;
   box-shadow: 0 10px 24px -8px rgba(26,23,17,0.2);
   background: var(--parch);
-  aspect-ratio: 4/3;
+  aspect-ratio: 1/1;
   opacity: 0.92;
 }
 
 .print-card-bonus img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: top center;
+  object-fit: contain;
+  object-position: center;
   display: block;
-  transform: scale(1.05);
-  transform-origin: top center;
-  filter: blur(0px);
 }
 
 .print-card-bonus::before {
@@ -647,6 +644,7 @@ body {
         Bônus exclusivos do kit completo
         <span>Pacote R$22,90</span>
       </p>
+      <p class="prints-premium-sub">Quiz e Flashcards de estudo</p>
       <div class="prints-bonus-grid">
         <div class="print-card-bonus">
           <img src="assets/prints/flashcard.png" alt="Flashcards de revisão">
