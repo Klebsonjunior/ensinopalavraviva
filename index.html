@@ -205,22 +205,12 @@ body {
 
 .print-card-bonus::before {
   content: '';
-  position: absolute;
-  top: 22%; left: 0; right: 0; bottom: 0;
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  z-index: 1;
-  pointer-events: none;
+  display: none;
 }
 
 .print-card-bonus::after {
   content: '';
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 50%;
-  background: linear-gradient(to top, var(--parch) 40%, transparent 100%);
-  pointer-events: none;
-  z-index: 2;
+  display: none;
 }
 
 .bonus-lock {
@@ -655,25 +645,11 @@ body {
       <div class="prints-bonus-grid">
         <div class="print-card-bonus">
           <img src="assets/prints/flashcard.png" alt="Flashcards de revisão">
-          <div class="bonus-lock">
-            <svg class="bonus-lock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-              <rect x="3" y="11" width="18" height="11" rx="2"/>
-              <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
-            </svg>
-            <p class="bonus-lock-text">Flashcards<br>de Revisão</p>
-            <p class="bonus-lock-sub">Incluso no kit completo</p>
-          </div>
+          <div class="print-label"><span>Flashcards de Revisão</span></div>
         </div>
         <div class="print-card-bonus">
           <img src="assets/prints/quiz.png" alt="Quiz interativo">
-          <div class="bonus-lock">
-            <svg class="bonus-lock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-              <rect x="3" y="11" width="18" height="11" rx="2"/>
-              <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
-            </svg>
-            <p class="bonus-lock-text">Quiz<br>Interativo</p>
-            <p class="bonus-lock-sub">Incluso no kit completo</p>
-          </div>
+          <div class="print-label"><span>Quiz Interativo</span></div>
         </div>
       </div>
     </div>
