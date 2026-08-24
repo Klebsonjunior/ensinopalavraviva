@@ -364,24 +364,11 @@ body {
 
 .offer-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 0;
-  max-width: 700px;
+  max-width: 460px;
   margin: 0 auto;
   align-items: start;
-}
-@media (max-width: 560px) { .offer-grid { grid-template-columns: 1fr; gap: 16px; } }
-
-/* CARD BASE */
-.offer-card {
-  background: var(--parch);
-  border: 1px solid var(--border);
-  border-right: none;
-  padding: 30px 24px;
-  text-align: center;
-}
-@media (max-width: 560px) {
-  .offer-card { border-right: 1px solid var(--border); }
 }
 
 /* CARD PREMIUM */
@@ -766,41 +753,25 @@ body {
 <!-- OFERTA -->
 <section class="offer" id="oferta">
   <div class="wrap">
-    <p class="section-label" style="margin-bottom: 20px;">Escolha sua oferta</p>
+    <p class="section-label" style="margin-bottom: 20px;">Sua oferta</p>
 
     <div class="value-bar">
-      Um livro introdutório sobre o mesmo tema custa entre R$40 e R$80, tem 200 páginas e você provavelmente não vai terminar. Aqui você entende tudo em uma tarde, por <strong>R$11,90</strong>.
+      Um livro introdutório sobre o mesmo tema custa entre R$40 e R$80, tem 200 páginas e você provavelmente não vai terminar. Aqui você entende tudo em uma tarde, por <strong>R$16,90</strong>.
     </div>
 
     <div class="offer-grid">
 
-      <!-- CARD BASE -->
-      <div class="offer-card">
-        <p class="offer-eyebrow-base">3 infográficos</p>
-        <p class="offer-price-old-base">De R$ 27,90</p>
-        <div class="offer-price-base"><sup>R$</sup>11<span class="offer-price-cents">,90</span></div>
-        <p class="offer-note-base">Acesso imediato por e-mail</p>
-        <ul class="offer-list-base">
-          <li>✓ Infográfico TULIP vs FACTS</li>
-          <li>✓ Infográfico das diferenças ponto a ponto</li>
-          <li>✓ Infográfico do contexto histórico</li>
-        </ul>
-        <a href="https://pay.kiwify.com.br/QeLNyX6" class="btn-base" target="_blank">Garantir meu acesso</a>
-        <p class="offer-safe-base">🔒 Kiwify · Garantia de 7 dias</p>
-      </div>
-
-      <!-- CARD PREMIUM -->
+      <!-- CARD PREMIUM (oferta única) -->
       <div class="offer-card-premium">
-        <div class="premium-ribbon">Mais escolhido</div>
         <p class="offer-eyebrow-premium">Kit completo</p>
         <p class="offer-price-old-premium">De R$ 87,00</p>
-        <div class="offer-price-premium"><sup>R$</sup>19<span class="offer-price-cents">,90</span></div>
-        <div class="premium-saving">Você economiza R$ 67,10</div>
+        <div class="offer-price-premium"><sup>R$</sup>16<span class="offer-price-cents">,90</span></div>
+        <div class="premium-saving">Você economiza R$ 70,10</div>
         <p class="offer-note-premium">Acesso imediato por e-mail</p>
 
         <!-- o que ja vem -->
         <ul class="offer-list-premium-included">
-          <li>✓ 3 Infográficos visuais (incluso no básico)</li>
+          <li>✓ 3 Infográficos visuais</li>
         </ul>
 
         <!-- o que vem a mais - destaque total -->
@@ -817,6 +788,31 @@ body {
         <p class="offer-safe-premium">🔒 Kiwify · Garantia de 7 dias</p>
       </div>
 
+    </div>
+  </div>
+</section>
+
+<!-- UPSELL -->
+<section class="offer" id="upsell" style="padding-top: 8px;">
+  <div class="wrap">
+    <p class="section-label" style="margin-bottom: 20px;">Antes de fechar</p>
+
+    <div class="offer-grid" style="max-width: 460px;">
+      <div class="offer-card-premium">
+        <p class="offer-eyebrow-premium">Oferta exclusiva de quem está comprando agora</p>
+        <p class="offer-price-old-premium">De R$ 97,00</p>
+        <div class="offer-price-premium"><sup>R$</sup>37<span class="offer-price-cents">,00</span></div>
+        <p class="offer-note-premium">Adicione ao seu pedido</p>
+
+        <p class="premium-extras-label">O que vem no combo</p>
+        <ul class="offer-list-premium-extras">
+          <li>✓ <strong>Cessacionismo, Providencialismo e Continuísmo</strong><br><small style="opacity:0.6;font-size: 12.2px;font-weight:400;">Entenda os três sistemas sobre a atuação dos dons espirituais hoje, sem tomar partido por você.</small></li>
+          <li>✓ <strong>Guia de Estudo sobre o Arrebatamento</strong> <span class="item-bonus">156 páginas</span><br><small style="opacity:0.6;font-size: 12.2px;font-weight:400;">Um guia completo e aprofundado sobre as correntes escatológicas do arrebatamento.</small></li>
+        </ul>
+
+        <a href="https://pay.kiwify.com.br/28gzTaK" class="btn-premium" target="_blank">Quero adicionar ao meu pedido</a>
+        <p class="offer-safe-premium">🔒 Kiwify · Garantia de 7 dias</p>
+      </div>
     </div>
   </div>
 </section>
