@@ -524,7 +524,7 @@ body {
 }
 .upsell-product {
   background: #FAF8F3; border: 2px solid var(--gold-line);
-  width: 200px; padding: 14px 14px 18px;
+  width: 220px; padding: 14px 14px 18px;
   text-align: center;
   box-shadow: 0 18px 40px -14px rgba(0,0,0,0.5);
 }
@@ -555,11 +555,25 @@ body {
   .upsell-product { width: 100%; max-width: 300px; }
 }
 
+.upsell-proof { margin: 8px auto 40px; max-width: 660px; text-align: center; }
+.upsell-proof-label {
+  font-size: 13.3px; font-weight: 700; color: rgba(250,248,243,0.7);
+  margin-bottom: 16px; line-height: 1.5;
+}
+.upsell-proof-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, 130px);
+  gap: 8px; justify-content: center;
+}
+.upsell-proof-card {
+  aspect-ratio: 3/4; overflow: hidden; border: 1px solid rgba(201,168,76,0.4);
+  background: var(--parch);
+}
+.upsell-proof-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
 .upsell-vsl-footer {
   text-align: center; border-top: 2px dashed var(--gold-line); padding-top: 36px;
   max-width: 460px; margin: 0 auto;
-}
-.upsell-vsl-old-price { font-size: 14.6px; color: rgba(250,248,243,0.55); text-decoration: line-through; }
+}.upsell-vsl-old-price { font-size: 14.6px; color: rgba(250,248,243,0.55); text-decoration: line-through; }
 .upsell-vsl-price {
   font-family: 'Playfair Display', serif; font-weight: 700; color: #FAF8F3;
   font-size: 62px; line-height: 1; margin: 8px 0 4px;
@@ -895,10 +909,10 @@ body {
 <!-- UPSELL -->
 <section class="upsell-vsl" id="upsell">
   <div class="wrap">
-    <div class="upsell-ribbon"><span>A oferta mais completa</span></div>
+    <div class="upsell-ribbon"><span>Só disponível nesta página</span></div>
     <p class="upsell-vsl-eyebrow">Antes de fechar, uma escolha melhor</p>
-    <h2 class="upsell-vsl-title">Em vez de levar só o material de Calvinismo, leve os <em>3 estudos essenciais</em> e pague menos do que a soma.</h2>
-    <p class="upsell-vsl-sub">O combo abaixo substitui a compra do material de Calvinismo isolado: você recebe o mesmo conteúdo sobre Calvinismo x Arminianismo, mais dois materiais exclusivos sobre outros debates que fazem parte do mesmo estudo — por um preço menor do que comprar cada um separado.</p>
+    <h2 class="upsell-vsl-title">Depois do Calvinismo, os próximos dois debates que vão te perguntar são <em>Cessacionismo x Continuísmo</em> e o <em>Arrebatamento</em>. Resolva os três agora, de uma vez, pagando menos do que qualquer um sozinho depois.</h2>
+    <p class="upsell-vsl-sub">Quem compra os 3 materiais separados paga R$56,70. Aqui, só enquanto você está fechando essa compra, você leva os três por R$37 — uma economia maior do que o preço do material de Cessacionismo sozinho. Essa condição não aparece em nenhum outro lugar do site.</p>
 
     <div class="upsell-showcase">
 
@@ -908,9 +922,14 @@ body {
         </div>
         <p class="upsell-product-name">Calvinismo e Arminianismo, ponto a ponto</p>
         <ul class="upsell-product-list">
-          <li>✓ 3 infográficos visuais</li>
-          <li>✓ 3 e-books completos</li>
-          <li>✓ Flashcards + Quiz</li>
+          <li>✓ Infográfico TULIP vs FACTS</li>
+          <li>✓ Infográfico das diferenças ponto a ponto</li>
+          <li>✓ Infográfico do contexto histórico</li>
+          <li>✓ E-book: O Grande Debate Soteriológico</li>
+          <li>✓ E-book: Fé, História e Doutrina</li>
+          <li>✓ E-book: A Salvação em Debate</li>
+          <li>✓ Flashcards de revisão</li>
+          <li>✓ Quiz interativo</li>
         </ul>
       </div>
 
@@ -922,10 +941,13 @@ body {
         </div>
         <p class="upsell-product-name">Cessacionismo, Providencialismo e Continuísmo</p>
         <ul class="upsell-product-list">
-          <li>✓ Guia completo em texto</li>
+          <li>✓ Guia completo em texto (8 módulos)</li>
+          <li>✓ Vídeo-resumo das três posições</li>
+          <li>✓ Audiocast Dons Espirituais, pra ouvir em qualquer lugar</li>
+          <li>✓ Infográficos das 3 posições lado a lado</li>
           <li>✓ Tabela comparativa das 3 posições</li>
           <li>✓ Linha do tempo histórica</li>
-          <li>✓ Glossário de termos</li>
+          <li>✓ Glossário completo de termos</li>
         </ul>
       </div>
 
@@ -939,19 +961,37 @@ body {
         </div>
         <p class="upsell-product-name">Guia de Estudo sobre o Arrebatamento</p>
         <ul class="upsell-product-list">
-          <li>✓ 156 páginas de conteúdo</li>
-          <li>✓ Principais correntes escatológicas</li>
-          <li>✓ Explicação sem viés pré-definido</li>
+          <li>✓ Fundamentos do tema</li>
+          <li>✓ A Grande Tribulação</li>
+          <li>✓ Textos decisivos do debate</li>
+          <li>✓ Pré-tribulacionismo</li>
+          <li>✓ Meso e pré-ira</li>
+          <li>✓ Pós-tribulacionismo</li>
+          <li>✓ As correntes frente a frente</li>
+          <li>✓ História do debate e conclusão</li>
         </ul>
       </div>
 
+    </div>
+
+    <!-- PROVA VISUAL: prints reais do material de cessacionismo -->
+    <div class="upsell-proof">
+      <p class="upsell-proof-label">Páginas e infográficos reais do material de Cessacionismo, Providencialismo e Continuísmo</p>
+      <div class="upsell-proof-grid">
+        <div class="upsell-proof-card"><img src="assets/upsell/infografico-cessacionismo.jpg" alt="Infográfico completo: Cessacionismo"></div>
+        <div class="upsell-proof-card"><img src="assets/upsell/infografico-providencialismo.jpg" alt="Infográfico completo: Providencialismo"></div>
+        <div class="upsell-proof-card"><img src="assets/upsell/infografico-continuismo.jpg" alt="Infográfico completo: Continuísmo"></div>
+        <div class="upsell-proof-card"><img src="assets/upsell/tabela-comparativa.jpg" alt="Tabela comparativa das três posições"></div>
+        <div class="upsell-proof-card"><img src="assets/upsell/print-capa-sumario.jpg" alt="Capa e sumário do material"></div>
+        <div class="upsell-proof-card"><img src="assets/upsell/print-parte1.jpg" alt="Abertura da Parte 1, Fundamentos Bíblicos"></div>
+      </div>
     </div>
 
     <div class="upsell-vsl-footer">
       <p class="upsell-vsl-old-price">Separado: R$16,90 + R$19,90 + R$19,90 = R$56,70</p>
       <div class="upsell-vsl-price"><sup>R$</sup>37<span class="offer-price-cents">,00</span></div>
       <p class="upsell-vsl-price-note">Os 3 materiais juntos — economize R$19,70</p>
-      <a href="https://pay.kiwify.com.br/28gzTaK" class="btn-mega" target="_blank">Quero os 3 juntos por R$37</a>
+      <a href="https://pay.kiwify.com.br/28gzTaK" class="btn-mega" target="_blank">Sim, quero os 3 estudos completos por R$37</a>
       <p class="upsell-vsl-safe">🔒 Kiwify · Garantia de 7 dias</p>
     </div>
   </div>
