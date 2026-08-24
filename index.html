@@ -478,66 +478,114 @@ body {
 .offer-safe-base { margin-top: 12px; font-size: 12.2px; color: var(--ink-light); }
 .offer-safe-premium { margin-top: 12px; font-size: 12.2px; color: rgba(245,240,232,0.4); }
 
-/* UPSELL — mini pagina de vendas dentro da pagina de vendas */
+/* UPSELL — mini pagina de vendas dentro da pagina de vendas, mais chamativa que a oferta principal */
 .upsell-vsl {
-  padding: 68px 0 72px;
-  background: var(--parch);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
+  padding: 64px 0 76px;
+  background: var(--cal);
+  border-top: 4px solid var(--gold-line);
+  border-bottom: 4px solid var(--gold-line);
+  position: relative;
 }
-.upsell-vsl .wrap { max-width: 620px; }
+.upsell-vsl .wrap { max-width: 780px; }
+
+.upsell-ribbon {
+  display: block; text-align: center; margin: 0 auto 22px;
+}
+.upsell-ribbon span {
+  display: inline-block;
+  background: var(--gold-line); color: var(--ink);
+  font-size: 12.6px; font-weight: 800; letter-spacing: 0.1em;
+  text-transform: uppercase; padding: 8px 20px;
+  box-shadow: 0 8px 24px -6px rgba(0,0,0,0.5);
+}
 
 .upsell-vsl-eyebrow {
-  font-size: 12.2px; font-weight: 800; letter-spacing: 0.14em;
-  text-transform: uppercase; color: var(--arm);
-  text-align: center; margin-bottom: 18px;
+  font-size: 12.6px; font-weight: 800; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--gold-line);
+  text-align: center; margin-bottom: 16px;
 }
 
 .upsell-vsl-title {
   font-family: 'Playfair Display', serif;
-  font-size: 28px; line-height: 1.35; font-weight: 700;
-  color: var(--ink); text-align: center; margin-bottom: 18px;
+  font-size: 30px; line-height: 1.3; font-weight: 700;
+  color: #FAF8F3; text-align: center; margin-bottom: 18px;
 }
-.upsell-vsl-title em { font-style: italic; color: var(--cal); }
+.upsell-vsl-title em { font-style: italic; color: var(--gold-line); }
 
 .upsell-vsl-sub {
-  font-size: 16.3px; color: var(--ink-light); line-height: 1.7;
-  text-align: center; max-width: 540px; margin: 0 auto 40px;
+  font-size: 16.3px; color: rgba(250,248,243,0.75); line-height: 1.7;
+  text-align: center; max-width: 580px; margin: 0 auto 48px;
 }
 
-.upsell-vsl-highlights {
-  display: flex; flex-direction: column; gap: 16px;
-  margin-bottom: 44px;
+/* SHOWCASE: as 3 capas lado a lado, visualmente unidas por + */
+.upsell-showcase {
+  display: flex; align-items: stretch; justify-content: center;
+  gap: 0; margin-bottom: 40px; flex-wrap: wrap;
 }
-.upsell-vsl-item {
-  display: flex; gap: 16px; align-items: flex-start;
-  background: var(--cream); border: 1px solid var(--border);
-  padding: 20px 22px;
+.upsell-product {
+  background: #FAF8F3; border: 2px solid var(--gold-line);
+  width: 200px; padding: 14px 14px 18px;
+  text-align: center;
+  box-shadow: 0 18px 40px -14px rgba(0,0,0,0.5);
 }
-.upsell-vsl-num {
-  flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%;
-  background: var(--cal); color: #FAF8F3;
+.upsell-product-cover {
+  width: 100%; aspect-ratio: 3/4; overflow: hidden;
+  margin-bottom: 12px; background: var(--parch);
+  border: 1px solid var(--border);
+}
+.upsell-product-cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.upsell-product-cover.mock {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  background: var(--cal); color: #FAF8F3; padding: 14px; gap: 8px;
+}
+.upsell-product-cover.mock .mock-kicker { font-size: 9.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold-line); font-weight: 800; }
+.upsell-product-cover.mock .mock-title { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 700; line-height: 1.25; }
+.upsell-product-cover.mock .mock-pages { font-size: 11.5px; color: rgba(250,248,243,0.6); border-top: 1px solid rgba(201,168,76,0.4); padding-top: 8px; margin-top: 4px; }
+.upsell-product-name { font-size: 13.6px; font-weight: 800; color: var(--ink); line-height: 1.3; margin-bottom: 8px; }
+.upsell-product-list { list-style: none; text-align: left; display: flex; flex-direction: column; gap: 5px; }
+.upsell-product-list li { font-size: 11.8px; color: var(--ink-mid); line-height: 1.4; }
+.upsell-plus {
   display: flex; align-items: center; justify-content: center;
-  font-family: 'Playfair Display', serif; font-weight: 700; font-size: 15.3px;
+  width: 44px; font-family: 'Playfair Display', serif;
+  font-size: 30px; font-weight: 700; color: var(--gold-line);
 }
-.upsell-vsl-item-title { font-size: 16.3px; font-weight: 800; color: var(--ink); margin-bottom: 6px; }
-.upsell-vsl-item-desc { font-size: 14.3px; color: var(--ink-light); line-height: 1.6; }
+@media (max-width: 720px) {
+  .upsell-showcase { flex-direction: column; align-items: center; gap: 18px; }
+  .upsell-plus { width: auto; transform: rotate(90deg); }
+  .upsell-product { width: 100%; max-width: 300px; }
+}
 
 .upsell-vsl-footer {
   text-align: center; border-top: 2px dashed var(--gold-line); padding-top: 36px;
+  max-width: 460px; margin: 0 auto;
 }
-.upsell-vsl-old-price { font-size: 14.3px; color: var(--ink-light); text-decoration: line-through; opacity: 0.7; }
+.upsell-vsl-old-price { font-size: 14.6px; color: rgba(250,248,243,0.55); text-decoration: line-through; }
 .upsell-vsl-price {
-  font-family: 'Playfair Display', serif; font-weight: 700; color: var(--arm);
-  font-size: 55.1px; line-height: 1; margin: 8px 0 4px;
+  font-family: 'Playfair Display', serif; font-weight: 700; color: #FAF8F3;
+  font-size: 62px; line-height: 1; margin: 8px 0 4px;
 }
-.upsell-vsl-price sup { font-size: 24.5px; vertical-align: top; top: 9px; position: relative; }
-.upsell-vsl-price-note { font-size: 13.3px; color: var(--ink-light); margin-bottom: 22px; }
-.upsell-vsl-safe { margin-top: 12px; font-size: 12.2px; color: var(--ink-light); }
+.upsell-vsl-price sup { font-size: 26px; vertical-align: top; top: 10px; position: relative; }
+.upsell-vsl-price-note {
+  display: inline-block; font-size: 13.6px; font-weight: 800; color: var(--gold-line);
+  background: rgba(201,168,76,0.18); border: 1px solid rgba(201,168,76,0.4);
+  padding: 5px 14px; margin-bottom: 26px; letter-spacing: 0.02em;
+}
+
+.btn-mega {
+  display: block; width: 100%; text-align: center;
+  background: linear-gradient(180deg, #E4B94A, var(--gold-line));
+  color: var(--ink);
+  font-size: 18.7px; font-weight: 800; padding: 22px 24px;
+  text-decoration: none; letter-spacing: 0.01em;
+  box-shadow: 0 14px 34px -8px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.15) inset;
+  transition: filter .15s, transform .15s;
+}
+.btn-mega:hover { filter: brightness(1.06); transform: translateY(-1px); }
+
+.upsell-vsl-safe { margin-top: 14px; font-size: 12.6px; color: rgba(250,248,243,0.55); }
 
 @media (max-width: 560px) {
   .upsell-vsl-title { font-size: 23px; }
-  .upsell-vsl-item { flex-direction: column; }
 }
 
 /* FAQ */
@@ -664,11 +712,8 @@ body {
       </div>
     </div>
 
-    <!-- PRINTS PREMIUM: amostra do material, pacote R$16,90 -->
+    <!-- PRINTS PREMIUM: amostra real do material -->
     <div class="prints-premium">
-      <p class="prints-premium-label">
-        O QUE VOCÊ RECEBE: <span>Pacote R$16,90</span>
-      </p>
       <p class="prints-premium-sub">Páginas reais do material que você recebe.</p>
       <div class="prints-premium-grid">
         <div class="print-card-premium">
@@ -688,10 +733,7 @@ body {
 
     <!-- PRINTS BONUS: quiz e flashcard bloqueados -->
     <div class="prints-bonus">
-      <p class="prints-bonus-label">
-        Bônus exclusivos
-        <span>Pacote R$16,90</span>
-      </p>
+      <p class="prints-bonus-label">Bônus inclusos</p>
       <p class="prints-premium-sub">Quiz e Flashcards de estudo</p>
       <div class="prints-bonus-grid">
         <div class="print-card-bonus">
@@ -831,14 +873,9 @@ body {
         <div class="premium-saving">Você economiza R$ 70,10</div>
         <p class="offer-note-premium">Acesso imediato por e-mail</p>
 
-        <!-- o que ja vem -->
-        <ul class="offer-list-premium-included">
-          <li>✓ 3 Infográficos visuais</li>
-        </ul>
-
-        <!-- o que vem a mais - destaque total -->
-        <p class="premium-extras-label">O que você leva a mais</p>
+        <p class="premium-extras-label">O que está incluso</p>
         <ul class="offer-list-premium-extras">
+          <li>✓ <strong>3 Infográficos visuais</strong> <br><small style="opacity:0.6;font-size: 12.2px;font-weight:400;">TULIP vs FACTS, diferenças ponto a ponto e contexto histórico.</small></li>
           <li>✓ <strong>O Grande Debate Soteriológico</strong> <span class="item-price">R$19,90</span><br><small style="opacity:0.6;font-size: 12.2px;font-weight:400;">Entenda por que o debate existe e qual ponto está realmente em disputa.</small></li>
           <li>✓ <strong>Fé, História e Doutrina</strong> <span class="item-price">R$19,90</span><br><small style="opacity:0.6;font-size: 12.2px;font-weight:400;">Veja como o contexto histórico moldou cada sistema, de 1517 até hoje.</small></li>
           <li>✓ <strong>A Salvação em Debate</strong> <span class="item-price">R$19,90</span><br><small style="opacity:0.6;font-size: 12.2px;font-weight:400;">Compare eleição, graça, expiação e perseverança sem confusão.</small></li>
@@ -858,39 +895,63 @@ body {
 <!-- UPSELL -->
 <section class="upsell-vsl" id="upsell">
   <div class="wrap">
+    <div class="upsell-ribbon"><span>A oferta mais completa</span></div>
     <p class="upsell-vsl-eyebrow">Antes de fechar, uma escolha melhor</p>
-    <h2 class="upsell-vsl-title">Em vez de levar só o material de Calvinismo, leve os 3 estudos essenciais e pague menos do que a soma.</h2>
+    <h2 class="upsell-vsl-title">Em vez de levar só o material de Calvinismo, leve os <em>3 estudos essenciais</em> e pague menos do que a soma.</h2>
     <p class="upsell-vsl-sub">O combo abaixo substitui a compra do material de Calvinismo isolado: você recebe o mesmo conteúdo sobre Calvinismo x Arminianismo, mais dois materiais exclusivos sobre outros debates que fazem parte do mesmo estudo — por um preço menor do que comprar cada um separado.</p>
 
-    <div class="upsell-vsl-highlights">
-      <div class="upsell-vsl-item">
-        <span class="upsell-vsl-num">1</span>
-        <div>
-          <p class="upsell-vsl-item-title">Calvinismo e Arminianismo, ponto a ponto <span class="item-price">R$16,90</span></p>
-          <p class="upsell-vsl-item-desc">O material completo que você já está prestes a levar — infográficos, flashcards e quiz inclusos.</p>
+    <div class="upsell-showcase">
+
+      <div class="upsell-product">
+        <div class="upsell-product-cover">
+          <img src="assets/prints/premium/premium_1_capa.webp" alt="Capa do material Calvinismo e Arminianismo">
         </div>
+        <p class="upsell-product-name">Calvinismo e Arminianismo, ponto a ponto</p>
+        <ul class="upsell-product-list">
+          <li>✓ 3 infográficos visuais</li>
+          <li>✓ 3 e-books completos</li>
+          <li>✓ Flashcards + Quiz</li>
+        </ul>
       </div>
-      <div class="upsell-vsl-item">
-        <span class="upsell-vsl-num">2</span>
-        <div>
-          <p class="upsell-vsl-item-title">Cessacionismo, Providencialismo e Continuísmo <span class="item-price">R$19,90</span></p>
-          <p class="upsell-vsl-item-desc">As três posições sobre a atuação dos dons espirituais hoje, com os argumentos bíblicos e históricos de cada lado, sem caricatura.</p>
+
+      <div class="upsell-plus">+</div>
+
+      <div class="upsell-product">
+        <div class="upsell-product-cover">
+          <img src="assets/upsell/cessacionismo-capa.jpg" alt="Capa do material Cessacionismo, Providencialismo e Continuísmo">
         </div>
+        <p class="upsell-product-name">Cessacionismo, Providencialismo e Continuísmo</p>
+        <ul class="upsell-product-list">
+          <li>✓ Guia completo em texto</li>
+          <li>✓ Tabela comparativa das 3 posições</li>
+          <li>✓ Linha do tempo histórica</li>
+          <li>✓ Glossário de termos</li>
+        </ul>
       </div>
-      <div class="upsell-vsl-item">
-        <span class="upsell-vsl-num">3</span>
-        <div>
-          <p class="upsell-vsl-item-title">Guia de Estudo sobre o Arrebatamento <span class="item-price">R$19,90</span></p>
-          <p class="upsell-vsl-item-desc">156 páginas sobre as principais correntes escatológicas do arrebatamento da igreja, pra você formar sua própria posição com base, não com achismo.</p>
+
+      <div class="upsell-plus">+</div>
+
+      <div class="upsell-product">
+        <div class="upsell-product-cover mock">
+          <p class="mock-kicker">Guia de estudo</p>
+          <p class="mock-title">Arrebatamento</p>
+          <p class="mock-pages">156 páginas</p>
         </div>
+        <p class="upsell-product-name">Guia de Estudo sobre o Arrebatamento</p>
+        <ul class="upsell-product-list">
+          <li>✓ 156 páginas de conteúdo</li>
+          <li>✓ Principais correntes escatológicas</li>
+          <li>✓ Explicação sem viés pré-definido</li>
+        </ul>
       </div>
+
     </div>
 
     <div class="upsell-vsl-footer">
-      <p class="upsell-vsl-old-price">Separado: R$56,70</p>
+      <p class="upsell-vsl-old-price">Separado: R$16,90 + R$19,90 + R$19,90 = R$56,70</p>
       <div class="upsell-vsl-price"><sup>R$</sup>37<span class="offer-price-cents">,00</span></div>
       <p class="upsell-vsl-price-note">Os 3 materiais juntos — economize R$19,70</p>
-      <a href="https://pay.kiwify.com.br/28gzTaK" class="btn-premium" target="_blank">Quero os 3 juntos por R$37</a>
+      <a href="https://pay.kiwify.com.br/28gzTaK" class="btn-mega" target="_blank">Quero os 3 juntos por R$37</a>
       <p class="upsell-vsl-safe">🔒 Kiwify · Garantia de 7 dias</p>
     </div>
   </div>
