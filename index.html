@@ -545,6 +545,10 @@ body {
 .upsell-product-cover.mock .mock-pages { font-size: 12px; color: rgba(250,248,243,0.65); border-top: 1px solid rgba(201,168,76,0.4); padding-top: 9px; margin-top: 5px; }
 .upsell-product-name {
   font-size: 15.3px; font-weight: 800; color: var(--ink); line-height: 1.32;
+  margin-bottom: 4px;
+}
+.upsell-product-kicker {
+  font-size: 11.5px; font-style: italic; color: var(--arm);
   margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--border);
 }
 .upsell-product-list { list-style: none; text-align: left; display: flex; flex-direction: column; gap: 9px; }
@@ -576,10 +580,12 @@ body {
 }
 .upsell-proof-card img {
   width: 100%; height: 100%; object-fit: cover; display: block;
-  filter: blur(6px) saturate(1.05); transform: scale(1.18);
   user-select: none;
 }
-.upsell-proof-card::after {
+.upsell-proof-card.blurred img {
+  filter: blur(6px) saturate(1.05); transform: scale(1.18);
+}
+.upsell-proof-card.blurred::after {
   content: "PRÉVIA";
   position: absolute; inset: 0;
   display: flex; align-items: center; justify-content: center;
@@ -926,10 +932,10 @@ body {
 <!-- UPSELL -->
 <section class="upsell-vsl" id="upsell">
   <div class="wrap">
-    <div class="upsell-ribbon"><span>Só disponível nesta página</span></div>
-    <p class="upsell-vsl-eyebrow">Antes de fechar, uma escolha melhor</p>
-    <h2 class="upsell-vsl-title">Depois do Calvinismo, os próximos dois debates que vão te perguntar são <em>Cessacionismo x Continuísmo</em> e o <em>Arrebatamento</em>. Resolva os três agora, de uma vez, pagando menos do que qualquer um sozinho depois.</h2>
-    <p class="upsell-vsl-sub">Quem compra os 3 materiais separados paga R$56,70. Aqui, só enquanto você está fechando essa compra, você leva os três por R$37 — uma economia maior do que o preço do material de Cessacionismo sozinho. Essa condição não aparece em nenhum outro lugar do site.</p>
+    <div class="upsell-ribbon"><span>Só disponível nesta página, só agora</span></div>
+    <p class="upsell-vsl-eyebrow">Antes de fechar, uma pergunta</p>
+    <h2 class="upsell-vsl-title">Calvinismo x Arminianismo foi só a primeira dúvida. <em>Cessacionismo x Continuísmo</em> e o <em>Arrebatamento</em> são as próximas duas — e vão aparecer mais cedo do que você imagina.</h2>
+    <p class="upsell-vsl-sub">Você pode resolver as três agora, de uma vez, e nunca mais precisar procurar material confiável quando a dúvida chegar. Comprando separado, esses 3 materiais saem por R$56,70. Fechando o combo agora, saem por R$37 — R$19,70 mais barato, o suficiente pra pagar o material de Cessacionismo sozinho. Depois que você sair desta página, essa condição não volta.</p>
 
     <div class="upsell-showcase">
 
@@ -938,6 +944,7 @@ body {
           <img src="assets/prints/premium/premium_1_capa.webp" alt="Capa do material Calvinismo e Arminianismo">
         </div>
         <p class="upsell-product-name">Calvinismo e Arminianismo, ponto a ponto</p>
+        <p class="upsell-product-kicker">O que você já vai levar hoje</p>
         <ul class="upsell-product-list">
           <li>✓ Infográfico TULIP vs FACTS</li>
           <li>✓ Infográfico das diferenças ponto a ponto</li>
@@ -957,6 +964,7 @@ body {
           <img src="assets/upsell/cessacionismo-capa.jpg" alt="Capa do material Cessacionismo, Providencialismo e Continuísmo">
         </div>
         <p class="upsell-product-name">Cessacionismo, Providencialismo e Continuísmo</p>
+        <p class="upsell-product-kicker">A próxima pergunta que vem depois desta</p>
         <ul class="upsell-product-list">
           <li>✓ Guia completo em texto (8 módulos)</li>
           <li>✓ Vídeo-resumo das três posições</li>
@@ -977,6 +985,7 @@ body {
           <p class="mock-pages">156 páginas</p>
         </div>
         <p class="upsell-product-name">Guia de Estudo sobre o Arrebatamento</p>
+        <p class="upsell-product-kicker">A pergunta que todo estudo escatológico levanta</p>
         <ul class="upsell-product-list">
           <li>✓ Fundamentos do tema</li>
           <li>✓ A Grande Tribulação</li>
@@ -991,16 +1000,26 @@ body {
 
     </div>
 
-    <!-- PROVA VISUAL: prints reais do material de cessacionismo -->
+    <!-- PROVA VISUAL: paginas do guia (nitidas) + infograficos (borrados) -->
     <div class="upsell-proof">
-      <p class="upsell-proof-label">Páginas e infográficos reais do material de Cessacionismo, Providencialismo e Continuísmo</p>
+      <p class="upsell-proof-label">Páginas reais do material de Cessacionismo, Providencialismo e Continuísmo</p>
       <div class="upsell-proof-grid">
-        <div class="upsell-proof-card"><img src="assets/upsell/infografico-cessacionismo.jpg" alt="Infográfico completo: Cessacionismo" draggable="false"></div>
-        <div class="upsell-proof-card"><img src="assets/upsell/infografico-providencialismo.jpg" alt="Infográfico completo: Providencialismo" draggable="false"></div>
-        <div class="upsell-proof-card"><img src="assets/upsell/infografico-continuismo.jpg" alt="Infográfico completo: Continuísmo" draggable="false"></div>
-        <div class="upsell-proof-card"><img src="assets/upsell/tabela-comparativa.jpg" alt="Tabela comparativa das três posições" draggable="false"></div>
-        <div class="upsell-proof-card"><img src="assets/upsell/print-capa-sumario.jpg" alt="Capa e sumário do material" draggable="false"></div>
-        <div class="upsell-proof-card"><img src="assets/upsell/print-parte1.jpg" alt="Abertura da Parte 1, Fundamentos Bíblicos" draggable="false"></div>
+        <div class="upsell-proof-card sharp"><img src="assets/upsell/print-capa-sumario.jpg" alt="Capa e sumário do material" draggable="false"></div>
+        <div class="upsell-proof-card sharp"><img src="assets/upsell/print-parte1.jpg" alt="Abertura da Parte 1, Fundamentos Bíblicos" draggable="false"></div>
+        <div class="upsell-proof-card sharp"><img src="assets/upsell/print-parte5.jpg" alt="Abertura da Parte 5, Dom por Dom" draggable="false"></div>
+        <div class="upsell-proof-card sharp"><img src="assets/upsell/print-apresentacao1.jpg" alt="Apresentação visual do kit, capa e introdução" draggable="false"></div>
+        <div class="upsell-proof-card sharp"><img src="assets/upsell/print-apresentacao2.jpg" alt="Apresentação visual do kit, ponto de consenso" draggable="false"></div>
+        <div class="upsell-proof-card sharp"><img src="assets/upsell/pagina-texto.jpg" alt="Página de texto do material" draggable="false"></div>
+        <div class="upsell-proof-card sharp"><img src="assets/upsell/linha-do-tempo.jpg" alt="Linha do tempo histórica" draggable="false"></div>
+        <div class="upsell-proof-card sharp"><img src="assets/upsell/glossario.jpg" alt="Glossário de termos do material" draggable="false"></div>
+        <div class="upsell-proof-card sharp"><img src="assets/upsell/tabela-comparativa.jpg" alt="Tabela comparativa das três posições" draggable="false"></div>
+      </div>
+
+      <p class="upsell-proof-label" style="margin-top:34px;">Infográficos completos — prévia</p>
+      <div class="upsell-proof-grid">
+        <div class="upsell-proof-card blurred"><img src="assets/upsell/infografico-cessacionismo.jpg" alt="Infográfico completo: Cessacionismo" draggable="false"></div>
+        <div class="upsell-proof-card blurred"><img src="assets/upsell/infografico-providencialismo.jpg" alt="Infográfico completo: Providencialismo" draggable="false"></div>
+        <div class="upsell-proof-card blurred"><img src="assets/upsell/infografico-continuismo.jpg" alt="Infográfico completo: Continuísmo" draggable="false"></div>
       </div>
     </div>
 
@@ -1009,7 +1028,7 @@ body {
       <div class="upsell-vsl-price"><sup>R$</sup>37<span class="offer-price-cents">,00</span></div>
       <p class="upsell-vsl-price-note">Os 3 materiais juntos — economize R$19,70</p>
       <a href="https://pay.kiwify.com.br/28gzTaK" class="btn-mega" target="_blank">Sim, quero os 3 estudos completos por R$37</a>
-      <p class="upsell-vsl-safe">🔒 Kiwify · Garantia de 7 dias</p>
+      <p class="upsell-vsl-safe">🔒 Sem letra miúda, sem pegadinha depois · Kiwify · Garantia de 7 dias</p>
     </div>
   </div>
 </section>
