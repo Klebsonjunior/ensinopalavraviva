@@ -1,0 +1,1200 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<!-- Meta Pixel -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', ' 1538792521116054');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1538792521116054&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calvinismo e Arminianismo: A Diferença, Ponto a Ponto</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+:root {
+  --parch:     #F5F0E8;
+  --cream:     #FAF8F3;
+  --ink:       #1A1711;
+  --ink-mid:   #2A2820;
+  --ink-light: #524E40;
+  --gold:      #8B6914;
+  --gold-mid:  #A67C1A;
+  --gold-pale: #F0E4BE;
+  --gold-line: #C9A84C;
+  --cal:       #1C3154;
+  --arm:       #5C1A1A;
+  --border:    #D4C9A8;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+
+.wrap { max-width: 720px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
+
+/* BG DECO */
+.bg-deco { position: fixed; pointer-events: none; z-index: 0; color: var(--gold); display: block; }
+.bg-deco.top-left   { top: -40px; left: -60px; width: 320px; height: 320px; opacity: 0.16; }
+.bg-deco.bottom-right { bottom: -50px; right: -70px; width: 360px; height: 360px; opacity: 0.14; transform: rotate(180deg); }
+.bg-deco.mid-right { top: 36%; right: -70px; width: 260px; height: 260px; opacity: 0.11; }
+.bg-deco.mid-left { top: 66%; left: -60px; width: 240px; height: 240px; opacity: 0.11; }
+
+/* HERO */
+.hero { text-align: center; padding: 52px 0 40px; }
+
+.hero-eyebrow {
+  font-size: 13.3px; font-weight: 700; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--gold-mid); margin-bottom: 18px;
+}
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(32px, 6vw, 48px);
+  font-weight: 800; line-height: 1.15;
+  color: var(--ink); max-width: 600px; margin: 0 auto 18px;
+}
+
+.hero h1 em { font-style: italic; color: var(--arm); }
+
+.hero-sub {
+  font-size: 19.4px; font-weight: 400; color: var(--ink-mid);
+  max-width: 500px; margin: 0 auto 36px; line-height: 1.65;
+}
+.hero-sub strong { color: var(--ink); font-weight: 700; }
+
+/* PRINTS: bloco com titulo acima */
+.prints-block {
+  margin: 0 auto 36px;
+  max-width: 640px;
+}
+
+.prints-block-label {
+  font-size: 12.2px; font-weight: 700; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--ink-light);
+  margin-bottom: 12px; text-align: left;
+  padding-left: 2px;
+}
+
+.prints-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.print-card {
+  position: relative;
+  border: 1px solid var(--border);
+  overflow: hidden;
+  box-shadow: 0 14px 32px -10px rgba(26,23,17,0.28);
+  background: var(--parch);
+  aspect-ratio: 3/4;
+}
+
+.print-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  transform: scale(1.04);
+  transform-origin: top center;
+  filter: blur(0px);
+}
+
+/* camada de blur sobre tudo exceto o topo */
+.print-card::before {
+  content: '';
+  position: absolute;
+  top: 22%; left: 0; right: 0; bottom: 0;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* fade inferior */
+.print-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 55%;
+  background: linear-gradient(to top, var(--parch) 30%, transparent 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.print-label {
+  position: absolute;
+  bottom: 10px; left: 0; right: 0;
+  z-index: 2; text-align: center;
+}
+
+.print-label span {
+  font-size: 11.2px; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--ink-mid);
+}
+
+/* prints de bonus: quiz e flashcard */
+.prints-bonus {
+  margin: 0 auto 36px;
+  max-width: 640px;
+  border: 2px solid var(--gold-line);
+  box-shadow: 0 0 0 4px rgba(201,168,76,0.15), 0 14px 34px -12px rgba(139,105,20,0.35);
+  padding: 18px 16px 16px;
+  background: linear-gradient(180deg, rgba(240,228,190,0.35), transparent 60%);
+  position: relative;
+}
+
+.prints-bonus-label {
+  font-size: 12.2px; font-weight: 700; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--gold-mid);
+  margin-bottom: 12px; text-align: left;
+  padding-left: 2px;
+  display: flex; align-items: center; gap: 8px;
+}
+
+.prints-bonus-label span {
+  background: var(--gold-pale);
+  border: 1px solid var(--gold-line);
+  font-size: 9.2px; padding: 2px 8px;
+  letter-spacing: 0.12em;
+}
+
+.prints-bonus-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.print-card-bonus {
+  position: relative;
+  border: 1px solid var(--gold-line);
+  overflow: hidden;
+  box-shadow: 0 10px 24px -8px rgba(26,23,17,0.2);
+  background: var(--parch);
+  aspect-ratio: 1/1;
+  opacity: 0.92;
+}
+
+.print-card-bonus img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+}
+
+.print-card-bonus::before {
+  content: '';
+  display: none;
+}
+
+.print-card-bonus::after {
+  content: '';
+  display: none;
+}
+
+.bonus-lock {
+  position: absolute;
+  inset: 0; z-index: 3;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 8px;
+  background: rgba(245,240,232,0.55);
+}
+
+.bonus-lock-icon {
+  width: 28px; height: 28px; color: var(--gold);
+}
+
+.bonus-lock-text {
+  font-size: 12.2px; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--ink-mid); text-align: center;
+  line-height: 1.4;
+}
+
+.bonus-lock-sub {
+  font-size: 11.2px; font-weight: 500;
+  color: var(--gold-mid);
+}
+
+@media (max-width: 480px) {
+  .prints-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .prints-grid .print-card:last-child { display: none; }
+  .prints-bonus-grid { grid-template-columns: 1fr 1fr; }
+}
+
+/* PRINTS PREMIUM (amostra do bonus R$19,90) */
+.prints-premium { margin: 0 auto 36px; max-width: 660px; text-align: center; }
+.prints-premium-label {
+  font-size: 15.3px; font-weight: 800; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--gold-mid);
+  margin-bottom: 6px; text-align: left; padding-left: 2px;
+  display: flex; align-items: center; gap: 8px;
+}
+.prints-premium-label span {
+  background: var(--gold-pale); border: 1px solid var(--gold-line);
+  font-size: 9.2px; padding: 2px 8px; letter-spacing: 0.12em;
+}
+.prints-premium-sub {
+  font-size: 14.5px; font-weight: 700; color: var(--ink-mid); margin-bottom: 12px; padding-left: 2px;
+}
+.prints-premium-grid { display: grid; grid-template-columns: repeat(auto-fit, 155px); gap: 8px; justify-content: center; }
+.print-card-premium {
+  position: relative; border: 1px solid var(--gold-line);
+  overflow: hidden; box-shadow: 0 10px 24px -8px rgba(26,23,17,0.2);
+  background: var(--parch); aspect-ratio: 4/3;
+}
+.print-card-premium img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
+
+/* CTA HERO */
+.hero-cta-stack {
+  display: flex; flex-direction: column; align-items: center; gap: 10px;
+}
+
+.btn-primary {
+  display: inline-block; background: var(--cal);
+  color: #FAF8F3; font-size: 18.4px; font-weight: 700;
+  letter-spacing: 0.01em; padding: 20px 56px;
+  border: none; text-decoration: none; cursor: pointer;
+  transition: background .15s;
+}
+.btn-primary:hover { background: #142440; }
+
+.hero-price {
+  font-size: 16.3px; color: var(--ink-light);
+}
+.hero-price s { opacity: 0.5; margin-right: 5px; }
+.hero-price b { color: var(--arm); font-weight: 800; font-size: 18.4px; }
+
+.hero-guarantee { font-size: 14.3px; color: var(--ink-light); }
+
+/* DOR */
+.pain {
+  background: var(--parch);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 36px 0;
+  margin-top: 48px;
+}
+
+.pain-list {
+  max-width: 560px; margin: 0 auto; padding: 0 24px;
+  display: flex; flex-direction: column; gap: 16px;
+}
+
+.pain-item {
+  display: flex; align-items: flex-start; gap: 14px;
+  font-size: 17.3px; color: var(--ink-mid); line-height: 1.6;
+}
+
+.pain-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--arm); flex-shrink: 0; margin-top: 9px;
+}
+
+/* ENTREGAVEIS */
+.deliverables { padding: 56px 0; border-bottom: 1px solid var(--border); }
+
+.section-label {
+  text-align: center; font-size: 13.3px; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--gold-mid); margin-bottom: 36px;
+}
+
+.deliv-list {
+  max-width: 580px; margin: 0 auto;
+  display: flex; flex-direction: column; gap: 28px;
+}
+
+.deliv-row {
+  display: grid; grid-template-columns: 52px 1fr;
+  gap: 20px; align-items: start;
+}
+
+.deliv-icon { width: 52px; height: 52px; color: var(--gold-mid); flex-shrink: 0; }
+
+.deliv-name {
+  font-size: 17.3px; font-weight: 700; color: var(--ink);
+  margin-bottom: 5px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+}
+
+.tag {
+  font-size: 10.2px; font-weight: 700; letter-spacing: 0.08em;
+  text-transform: uppercase; padding: 2px 8px;
+  border: 1px solid currentColor; flex-shrink: 0;
+}
+.tag-main { color: var(--cal); }
+.tag-bonus { color: var(--gold-mid); }
+
+.deliv-desc { font-size: 16.3px; color: var(--ink-light); line-height: 1.65; }
+
+/* OFERTA */
+.offer { padding: 56px 0 64px; text-align: center; }
+
+.value-bar {
+  max-width: 560px; margin: 0 auto 36px;
+  background: var(--gold-pale);
+  border: 1px solid var(--gold-line);
+  padding: 20px 26px;
+  font-size: 16.3px; color: var(--ink-mid); line-height: 1.65;
+}
+.value-bar strong { color: var(--arm); font-weight: 800; }
+
+.offer-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  max-width: 460px;
+  margin: 0 auto;
+  align-items: start;
+}
+
+/* CARD PREMIUM */
+.offer-card-premium {
+  background: var(--cal);
+  border: 3px solid var(--gold-line);
+  padding: 36px 26px 30px;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 0 0 7px rgba(201,168,76,0.18), 0 28px 70px -12px rgba(28,49,84,0.6), 0 0 0 1px var(--gold-line);
+  transform: translateY(-8px);
+  text-align: center;
+}
+
+.premium-ribbon {
+  position: absolute;
+  top: -1px; left: 50%; transform: translateX(-50%);
+  background: var(--gold-line);
+  color: var(--ink);
+  font-size: 11.2px; font-weight: 800;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  padding: 6px 22px;
+  white-space: nowrap;
+}
+
+/* tipografia cards */
+.offer-eyebrow-base {
+  font-size: 12.2px; font-weight: 700; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--gold-mid); margin-bottom: 12px;
+}
+.offer-eyebrow-premium {
+  font-size: 12.2px; font-weight: 700; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--gold-line); margin-bottom: 12px; margin-top: 16px;
+}
+
+.offer-price-old-base { font-size: 14.3px; color: var(--ink-light); text-decoration: line-through; opacity: 0.6; }
+.offer-price-old-premium { font-size: 14.3px; font-weight: 700; color: rgba(245,240,232,0.55); text-decoration: line-through; }
+
+.offer-price-base {
+  font-family: 'Playfair Display', serif;
+  font-size: 55.1px; font-weight: 700; color: var(--ink); line-height: 1; margin: 6px 0 8px;
+}
+.offer-price-premium {
+  font-family: 'Playfair Display', serif;
+  font-size: 63.2px; font-weight: 700; color: #FAF8F3; line-height: 1; margin: 6px 0 8px;
+}
+.offer-price-base sup, .offer-price-premium sup { font-size: 24.5px; vertical-align: top; top: 9px; position: relative; }
+.offer-price-cents { font-size: 32.6px; }
+
+.offer-note-base { font-size: 13.3px; color: var(--ink-light); margin-bottom: 20px; }
+.offer-note-premium { font-size: 13.3px; color: rgba(245,240,232,0.55); margin-bottom: 16px; }
+
+/* DIVISOR PREMIUM: o que vem a mais */
+.premium-extras-label {
+  font-size: 11.2px; font-weight: 800; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--gold-line);
+  border-top: 1px solid rgba(201,168,76,0.3);
+  padding-top: 16px; margin: 4px 0 14px;
+  text-align: left;
+}
+
+.offer-list-base { list-style: none; text-align: left; margin-bottom: 24px; display: flex; flex-direction: column; gap: 9px; }
+.offer-list-base li { font-size: 14.3px; color: var(--ink-mid); line-height: 1.45; }
+
+.offer-list-premium-included { list-style: none; text-align: left; margin-bottom: 4px; display: flex; flex-direction: column; gap: 8px; }
+.offer-list-premium-included li { font-size: 13.3px; color: rgba(245,240,232,0.55); line-height: 1.4; }
+
+.offer-list-premium-extras { list-style: none; text-align: left; margin-bottom: 24px; display: flex; flex-direction: column; gap: 10px; }
+.offer-list-premium-extras li { font-size: 15.3px; color: #FAF8F3; line-height: 1.45; font-weight: 500; }
+.offer-list-premium-extras li strong { font-weight: 800; }
+
+.item-price { font-size: 12.6px; font-weight: 800; opacity: 0.75; margin-left: 4px; text-decoration: line-through; }
+.item-bonus {
+  font-size: 10.2px; font-weight: 800; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--gold-line);
+  background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.35);
+  padding: 1px 6px; margin-left: 4px; vertical-align: middle;
+}
+
+.premium-saving {
+  display: inline-block;
+  background: rgba(201,168,76,0.18);
+  border: 1px solid rgba(201,168,76,0.4);
+  color: var(--gold-line);
+  font-size: 13.3px; font-weight: 700;
+  padding: 5px 14px; margin-bottom: 16px;
+  letter-spacing: 0.04em;
+}
+
+.btn-base {
+  display: block; width: 100%; text-align: center;
+  background: var(--cal); color: #FAF8F3;
+  font-size: 16.3px; font-weight: 700; padding: 16px 24px;
+  text-decoration: none; transition: background .15s;
+}
+.btn-base:hover { background: #142440; }
+
+.btn-premium {
+  display: block; width: 100%; text-align: center;
+  background: var(--gold-line); color: var(--ink);
+  font-size: 17.3px; font-weight: 800; padding: 19px 24px;
+  text-decoration: none; transition: filter .15s;
+  letter-spacing: 0.01em;
+}
+.btn-premium:hover { filter: brightness(1.08); }
+
+.offer-safe-base { margin-top: 12px; font-size: 12.2px; color: var(--ink-light); }
+.offer-safe-premium { margin-top: 12px; font-size: 12.2px; color: rgba(245,240,232,0.4); }
+
+/* UPSELL — mini pagina de vendas dentro da pagina de vendas, mais chamativa que a oferta principal */
+.upsell-vsl {
+  padding: 64px 0 76px;
+  background: var(--cal);
+  border-top: 4px solid var(--gold-line);
+  border-bottom: 4px solid var(--gold-line);
+  position: relative;
+}
+.upsell-vsl .wrap { max-width: 780px; }
+
+.upsell-ribbon {
+  display: block; text-align: center; margin: 0 auto 22px;
+}
+.upsell-ribbon span {
+  display: inline-block;
+  background: var(--gold-line); color: var(--ink);
+  font-size: 12.6px; font-weight: 800; letter-spacing: 0.1em;
+  text-transform: uppercase; padding: 8px 20px;
+  box-shadow: 0 8px 24px -6px rgba(0,0,0,0.5);
+}
+
+.upsell-vsl-eyebrow {
+  font-size: 12.6px; font-weight: 800; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--gold-line);
+  text-align: center; margin-bottom: 16px;
+}
+
+.upsell-vsl-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 30px; line-height: 1.3; font-weight: 700;
+  color: #FAF8F3; text-align: center; margin-bottom: 18px;
+}
+.upsell-vsl-title em { font-style: italic; color: var(--gold-line); }
+
+.upsell-vsl-sub {
+  font-size: 16.3px; color: rgba(250,248,243,0.75); line-height: 1.7;
+  text-align: center; max-width: 580px; margin: 0 auto 48px;
+}
+
+/* SHOWCASE: as 3 capas lado a lado, visualmente unidas por + */
+.upsell-showcase {
+  display: flex; align-items: stretch; justify-content: center;
+  gap: 0; margin-bottom: 40px; flex-wrap: wrap;
+}
+.upsell-product {
+  background: #FAF8F3; border: 2px solid var(--gold-line);
+  width: 220px; padding: 14px 14px 18px;
+  text-align: center;
+  box-shadow: 0 18px 40px -14px rgba(0,0,0,0.5);
+}
+.upsell-product-cover {
+  width: 100%; aspect-ratio: 3/4; overflow: hidden;
+  margin-bottom: 12px; background: var(--parch);
+  border: 1px solid var(--border);
+}
+.upsell-product-cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.upsell-product-cover.mock {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  background: var(--cal); color: #FAF8F3; padding: 16px 12px; gap: 6px;
+  position: relative; overflow: hidden;
+}
+.upsell-product-cover.mock::before {
+  content: ''; position: absolute; inset: 6px; border: 1px solid rgba(201,168,76,0.55); pointer-events: none;
+}
+.upsell-product-cover.mock .mock-star {
+  position: absolute; top: 50%; left: 50%; width: 120px; height: 120px;
+  transform: translate(-50%,-50%); color: var(--gold-line); opacity: 0.16; pointer-events: none;
+}
+.upsell-product-cover.mock .mock-soon {
+  position: absolute; top: 6px; left: 50%; transform: translateX(-50%);
+  background: var(--gold-line); color: var(--ink);
+  font-size: 8.4px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 3px 10px; white-space: nowrap; z-index: 1;
+}
+.upsell-product-cover.mock .mock-kicker { font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-line); font-weight: 800; margin-top: 12px; position: relative; z-index: 1; }
+.upsell-product-cover.mock .mock-title { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 700; line-height: 1.25; position: relative; z-index: 1; }
+.upsell-product-cover.mock .mock-pages { font-size: 11px; color: rgba(250,248,243,0.6); border-top: 1px solid rgba(201,168,76,0.4); padding-top: 8px; margin-top: 4px; position: relative; z-index: 1; }
+.upsell-product-name { font-size: 13.6px; font-weight: 800; color: var(--ink); line-height: 1.3; margin-bottom: 10px; }
+
+/* lista "o que você recebe" — ícone + título + descrição, igual à página do produto */
+.upsell-kit-list { list-style: none; text-align: left; display: flex; flex-direction: column; gap: 10px; }
+.upsell-kit-item { display: flex; align-items: flex-start; gap: 9px; }
+.upsell-kit-item .ic {
+  width: 26px; height: 26px; border-radius: 6px; flex-shrink: 0;
+  background: var(--parch); border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+}
+.upsell-kit-item .ic svg { width: 13px; height: 13px; color: var(--gold-mid); }
+.upsell-kit-item .txt strong { display: block; font-size: 12.6px; font-weight: 800; color: var(--ink); line-height: 1.3; }
+.upsell-kit-item .txt small { display: block; font-size: 11.4px; color: var(--ink-light); line-height: 1.4; margin-top: 2px; }
+.upsell-plus {
+  display: flex; align-items: center; justify-content: center;
+  width: 44px; font-family: 'Playfair Display', serif;
+  font-size: 30px; font-weight: 700; color: var(--gold-line);
+}
+@media (max-width: 720px) {
+  .upsell-showcase { flex-direction: column; align-items: center; gap: 18px; }
+  .upsell-plus { width: auto; transform: rotate(90deg); }
+  .upsell-product { width: 100%; max-width: 300px; }
+}
+
+/* VEJA POR DENTRO — marquee de prints reais, sem borrão (prova de conteúdo) */
+.upsell-marquee-section { margin: 34px 0 6px; }
+.upsell-marquee-label {
+  text-align: center; font-size: 12.2px; font-weight: 800; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--gold-line); margin-bottom: 16px;
+}
+.upsell-marquee {
+  width: 100%; overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+}
+.upsell-marquee-track {
+  display: flex; align-items: center; gap: 12px; width: max-content;
+  animation: upsell-marquee-scroll 40s linear infinite;
+}
+@media (hover: hover) { .upsell-marquee:hover .upsell-marquee-track { animation-play-state: paused; } }
+.upsell-marquee-frame {
+  flex: 0 0 auto; height: 210px; border-radius: 4px; overflow: hidden;
+  border: 1px solid rgba(201,168,76,0.4); box-shadow: 0 12px 26px -8px rgba(0,0,0,0.5);
+}
+.upsell-marquee-frame img { height: 100%; width: auto; display: block; }
+@keyframes upsell-marquee-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+@media (max-width: 560px) {
+  .upsell-marquee-frame { height: 160px; }
+  .upsell-marquee-track { animation-duration: 28s; }
+}
+
+/* O KIT INCLUI (infográficos) — capas borradas com cadeado, como na página principal */
+.upsell-info-teaser { margin: 36px auto 0; max-width: 340px; text-align: center; }
+.upsell-info-caption-top {
+  font-size: 12.2px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--gold-line); margin-bottom: 4px;
+}
+.upsell-info-visual { position: relative; height: 220px; width: 210px; margin: 26px auto 10px; }
+.upsell-info-card {
+  position: absolute; width: 148px; border-radius: 5px; overflow: hidden;
+  border: 1px solid rgba(201,168,76,0.45); box-shadow: 0 16px 32px -8px rgba(0,0,0,0.55);
+  background: #fff;
+}
+.upsell-info-card img { width: 100%; display: block; }
+.upsell-info-card.c1 { left: -12px; top: 32px; transform: rotate(-8deg); z-index: 1; }
+.upsell-info-card.c2 { left: 32px; top: 0; transform: rotate(2deg); z-index: 3; }
+.upsell-info-card.c3 { left: 76px; top: 36px; transform: rotate(9deg); z-index: 2; }
+.upsell-info-blur {
+  position: absolute; left: 0; right: 0; bottom: 0; height: 58%;
+  backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+  background: linear-gradient(180deg, rgba(28,49,84,0) 0%, rgba(28,49,84,0.55) 35%, rgba(28,49,84,0.92) 100%);
+  display: flex; align-items: flex-end; justify-content: center; padding-bottom: 10px;
+}
+.upsell-info-lock { width: 15px; height: 15px; color: var(--gold-line); }
+.upsell-info-note { font-size: 12.6px; font-style: italic; color: rgba(250,248,243,0.55); margin-top: 4px; }
+
+.upsell-vsl-footer {
+  text-align: center; border-top: 2px dashed var(--gold-line); padding-top: 32px;
+  max-width: 460px; margin: 0 auto;
+}
+
+/* preço detalhado item a item, igual à página do produto */
+.upsell-breakdown {
+  list-style: none; text-align: left; margin: 0 auto 18px; max-width: 340px;
+  display: flex; flex-direction: column; gap: 8px;
+}
+.upsell-breakdown li {
+  display: flex; justify-content: space-between; align-items: baseline; gap: 10px;
+  font-size: 13.3px; color: rgba(250,248,243,0.8); line-height: 1.4;
+  padding-bottom: 8px; border-bottom: 1px dashed rgba(201,168,76,0.3);
+}
+.upsell-breakdown li .item-old { text-decoration: line-through; color: rgba(250,248,243,0.45); font-weight: 700; white-space: nowrap; }
+.upsell-breakdown-total {
+  display: flex; justify-content: space-between; align-items: baseline;
+  max-width: 340px; margin: 0 auto 4px; font-size: 13.6px; color: rgba(250,248,243,0.6);
+}
+.upsell-breakdown-total .total-old { text-decoration: line-through; }
+.upsell-vsl-old-price { font-size: 14.6px; color: rgba(250,248,243,0.55); text-decoration: line-through; }
+.upsell-vsl-price {
+  font-family: 'Playfair Display', serif; font-weight: 700; color: #FAF8F3;
+  font-size: 62px; line-height: 1; margin: 8px 0 4px;
+}
+.upsell-vsl-price sup { font-size: 26px; vertical-align: top; top: 10px; position: relative; }
+.upsell-vsl-price-note {
+  display: inline-block; font-size: 13.6px; font-weight: 800; color: var(--gold-line);
+  background: rgba(201,168,76,0.18); border: 1px solid rgba(201,168,76,0.4);
+  padding: 5px 14px; margin-bottom: 26px; letter-spacing: 0.02em;
+}
+
+.btn-mega {
+  display: block; width: 100%; text-align: center;
+  background: linear-gradient(180deg, #E4B94A, var(--gold-line));
+  color: var(--ink);
+  font-size: 18.7px; font-weight: 800; padding: 22px 24px;
+  text-decoration: none; letter-spacing: 0.01em;
+  box-shadow: 0 14px 34px -8px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.15) inset;
+  transition: filter .15s, transform .15s;
+}
+.btn-mega:hover { filter: brightness(1.06); transform: translateY(-1px); }
+
+.upsell-vsl-safe { margin-top: 14px; font-size: 12.6px; color: rgba(250,248,243,0.55); }
+
+@media (max-width: 560px) {
+  .upsell-vsl-title { font-size: 23px; }
+}
+
+/* FAQ */
+.faq { padding: 8px 0 64px; }
+.faq-list { max-width: 560px; margin: 0 auto; display: flex; flex-direction: column; gap: 8px; }
+.faq-item { border: 1px solid var(--border); background: var(--parch); }
+.faq-q {
+  width: 100%; text-align: left; background: none; border: none; cursor: pointer;
+  padding: 18px 22px; display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  font-size: 16.3px; font-weight: 600; color: var(--ink);
+}
+.faq-icon { font-family: 'Playfair Display', serif; font-size: 22.4px; color: var(--gold-mid); flex-shrink: 0; transition: transform .2s; }
+.faq-item.open .faq-icon { transform: rotate(45deg); }
+.faq-a { max-height: 0; overflow: hidden; transition: max-height .25s ease; }
+.faq-item.open .faq-a { max-height: 200px; }
+.faq-a-inner { padding: 0 22px 20px; font-size: 16.3px; color: var(--ink-mid); line-height: 1.65; }
+
+/* URGENCY MARQUEE */
+.urgency-marquee {
+  position: sticky; top: 0; z-index: 50;
+  background: var(--arm);
+  overflow: hidden;
+  white-space: nowrap;
+  border-bottom: 1px solid rgba(0,0,0,0.15);
+}
+.urgency-marquee-track {
+  display: inline-flex;
+  animation: marquee-scroll 18s linear infinite;
+}
+.urgency-marquee-track span {
+  display: inline-flex;
+  align-items: center;
+  font-size: 12.8px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #FAF8F3;
+  padding: 9px 32px;
+  white-space: nowrap;
+}
+.urgency-marquee-track span::before {
+  content: '';
+  display: inline-block;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--gold-line);
+  margin-right: 12px;
+}
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .urgency-marquee-track { animation: none; }
+}
+
+/* COMO FOI FEITO */
+.how-made {
+  padding: 56px 0 64px;
+  border-top: 1px solid var(--border);
+  background: var(--parch);
+}
+.how-made .wrap { max-width: 600px; text-align: center; }
+.how-made h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(24px, 4vw, 30px);
+  font-weight: 700; color: var(--ink);
+  margin-bottom: 20px;
+}
+.how-made p {
+  font-size: 16.3px; color: var(--ink-mid);
+  line-height: 1.75; margin-bottom: 14px;
+}
+.how-made p:last-child { margin-bottom: 0; }
+</style>
+</head>
+<body>
+
+<div class="urgency-marquee">
+  <div class="urgency-marquee-track">
+    <span>Oferta por tempo limitado</span>
+    <span>Oferta por tempo limitado</span>
+    <span>Oferta por tempo limitado</span>
+    <span>Oferta por tempo limitado</span>
+    <span>Oferta por tempo limitado</span>
+    <span>Oferta por tempo limitado</span>
+    <span>Oferta por tempo limitado</span>
+    <span>Oferta por tempo limitado</span>
+  </div>
+</div>
+
+<svg class="bg-deco top-left" viewBox="0 0 300 300" fill="none"><circle cx="150" cy="150" r="140" stroke="currentColor" stroke-width="1"/><circle cx="150" cy="150" r="105" stroke="currentColor" stroke-width="0.6"/><circle cx="150" cy="150" r="70" stroke="currentColor" stroke-width="0.5"/><line x1="10" y1="150" x2="290" y2="150" stroke="currentColor" stroke-width="0.4"/><line x1="150" y1="10" x2="150" y2="290" stroke="currentColor" stroke-width="0.4"/><path d="M150 80 L160 140 L220 150 L160 160 L150 220 L140 160 L80 150 L140 140 Z" stroke="currentColor" stroke-width="0.6" fill="none"/></svg>
+<svg class="bg-deco bottom-right" viewBox="0 0 300 300" fill="none"><circle cx="150" cy="150" r="140" stroke="currentColor" stroke-width="1"/><circle cx="150" cy="150" r="105" stroke="currentColor" stroke-width="0.6"/><circle cx="150" cy="150" r="70" stroke="currentColor" stroke-width="0.5"/><line x1="10" y1="150" x2="290" y2="150" stroke="currentColor" stroke-width="0.4"/><line x1="150" y1="10" x2="150" y2="290" stroke="currentColor" stroke-width="0.4"/><path d="M150 80 L160 140 L220 150 L160 160 L150 220 L140 160 L80 150 L140 140 Z" stroke="currentColor" stroke-width="0.6" fill="none"/></svg>
+<svg class="bg-deco mid-right" viewBox="0 0 220 220" fill="none"><circle cx="110" cy="110" r="100" stroke="currentColor" stroke-width="0.8"/><circle cx="110" cy="110" r="70" stroke="currentColor" stroke-width="0.5"/><path d="M110 50 L118 102 L170 110 L118 118 L110 170 L102 118 L50 110 L102 102 Z" stroke="currentColor" stroke-width="0.5" fill="none"/></svg>
+<svg class="bg-deco mid-left" viewBox="0 0 200 200" fill="none"><circle cx="100" cy="100" r="90" stroke="currentColor" stroke-width="0.8"/><circle cx="100" cy="100" r="62" stroke="currentColor" stroke-width="0.5"/><path d="M100 45 L107 93 L155 100 L107 107 L100 155 L93 107 L45 100 L93 93 Z" stroke="currentColor" stroke-width="0.5" fill="none"/></svg>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <p class="hero-eyebrow">Material visual de estudo bíblico</p>
+
+    <h1>Você ouve falar em Calvinismo e Arminianismo. Mas consegue <em>explicar a diferença?</em></h1>
+
+    <p class="hero-sub">
+      Antes de enfrentar livros densos, entenda o mapa geral em uma tarde. <strong>Sem precisar começar pelo começo errado.</strong>
+    </p>
+
+    <!-- PRINTS PRINCIPAIS -->
+    <div class="prints-block">
+      <p class="prints-block-label">O que você recebe</p>
+      <div class="prints-grid">
+        <div class="print-card">
+          <img src="assets/prints/print_debate.png" alt="Infográfico TULIP vs FACTS">
+          <div class="print-label"><span>TULIP vs FACTS</span></div>
+        </div>
+        <div class="print-card">
+          <img src="assets/prints/print_comparativo.png" alt="Infográfico linha do tempo">
+          <div class="print-label"><span>Linha do tempo</span></div>
+        </div>
+        <div class="print-card">
+          <img src="assets/prints/print_historico.png" alt="Infográfico fé e doutrina">
+          <div class="print-label"><span>Fé e doutrina</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PRINTS PREMIUM: amostra real do material -->
+    <div class="prints-premium">
+      <p class="prints-premium-sub">Páginas reais do material que você recebe.</p>
+      <div class="prints-premium-grid">
+        <div class="print-card-premium">
+          <img src="assets/prints/premium/premium_1_capa.webp" alt="Capa de um dos e-books do pacote">
+        </div>
+        <div class="print-card-premium">
+          <img src="assets/prints/premium/premium_2_titulo.webp" alt="Página de abertura de um dos e-books">
+        </div>
+        <div class="print-card-premium">
+          <img src="assets/prints/premium/premium_3_biografias.webp" alt="Página de conteúdo: biografias de Calvino e Arminius">
+        </div>
+        <div class="print-card-premium">
+          <img src="assets/prints/premium/premium_4_linhadotempo.webp" alt="Página de conteúdo: linha do tempo histórica">
+        </div>
+      </div>
+    </div>
+
+    <!-- PRINTS BONUS: quiz e flashcard bloqueados -->
+    <div class="prints-bonus">
+      <p class="prints-bonus-label">Bônus inclusos</p>
+      <p class="prints-premium-sub">Quiz e Flashcards de estudo</p>
+      <div class="prints-bonus-grid">
+        <div class="print-card-bonus">
+          <img src="assets/prints/flashcard.png" alt="Flashcards de revisão">
+          <div class="print-label"><span>Flashcards de Revisão</span></div>
+        </div>
+        <div class="print-card-bonus">
+          <img src="assets/prints/quiz.png" alt="Quiz interativo">
+          <div class="print-label"><span>Quiz Interativo</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-cta-stack">
+      <a href="#oferta" class="btn-primary">Quero entender de uma vez</a>
+      <p class="hero-price">De <s>R$87,00</s> por <b>R$16,90</b></p>
+      <p class="hero-guarantee">Acesso imediato por e-mail. Garantia de 7 dias.</p>
+    </div>
+  </div>
+</section>
+
+<!-- NEUTRALIDADE -->
+<div style="background:var(--gold-pale);border-top:1px solid var(--gold-line);border-bottom:1px solid var(--gold-line);padding:28px 0;margin-top:0;">
+  <div style="max-width:560px;margin:0 auto;padding:0 24px;text-align:center;">
+    <p style="font-size: 12.2px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold-mid);margin-bottom:12px;">Um estudo visual, equilibrado e sem caricaturas</p>
+    <p style="font-size: 16.3px;color:var(--ink-mid);line-height:1.7;">Este material não foi criado para defender um lado. A proposta é apresentar os pontos principais de cada visão com clareza, contexto histórico e linguagem respeitosa — para que você entenda o debate antes de tomar posição.</p>
+  </div>
+</div>
+
+<!-- DOR -->
+<div class="pain">
+  <div class="pain-list">
+    <div class="pain-item">
+      <span class="pain-dot"></span>
+      <span>Você já ouviu falar em eleição, livre-arbítrio, graça irresistível ou perda da salvação… mas ficou com a sensação de que todo mundo entende isso, menos você.</span>
+    </div>
+    <div class="pain-item">
+      <span class="pain-dot"></span>
+      <span>Quando alguém pergunta "você é calvinista ou arminiano?" você desvia porque não sabe responder com segurança.</span>
+    </div>
+    <div class="pain-item">
+      <span class="pain-dot"></span>
+      <span>Os livros sobre o assunto são longos e densos. Você começa e não termina.</span>
+    </div>
+  </div>
+</div>
+
+<!-- ENTREGAVEIS -->
+<section class="deliverables">
+  <div class="wrap">
+    <p class="section-label">O que você recebe</p>
+    <div class="deliv-list">
+
+      <div class="deliv-row">
+        <svg class="deliv-icon" viewBox="0 0 48 48" fill="none">
+          <path d="M8 10 L20 6 L28 10 L40 6 L40 38 L28 42 L20 38 L8 42 Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+          <path d="M20 6 L20 38" stroke="currentColor" stroke-width="1.4"/>
+          <path d="M28 10 L28 42" stroke="currentColor" stroke-width="1.4"/>
+        </svg>
+        <div>
+          <p class="deliv-name">Infográfico TULIP vs FACTS <span class="tag tag-main">Principal</span></p>
+          <p class="deliv-desc">Os 5 pontos do Calvinismo e os 5 do Arminianismo frente a frente. Em uma página você vê onde cada sistema concorda, onde diverge e o que está em jogo em cada ponto.</p>
+        </div>
+      </div>
+
+      <div class="deliv-row">
+        <svg class="deliv-icon" viewBox="0 0 48 48" fill="none">
+          <path d="M8 10 L20 6 L28 10 L40 6 L40 38 L28 42 L20 38 L8 42 Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+          <path d="M20 6 L20 38" stroke="currentColor" stroke-width="1.4"/>
+          <path d="M28 10 L28 42" stroke="currentColor" stroke-width="1.4"/>
+          <circle cx="14" cy="22" r="2" fill="currentColor"/>
+          <circle cx="34" cy="26" r="2" fill="currentColor"/>
+        </svg>
+        <div>
+          <p class="deliv-name">Infográfico das diferenças ponto a ponto <span class="tag tag-main">Principal</span></p>
+          <p class="deliv-desc">Cada doutrina com ícone e texto curto. Natureza humana, eleição, expiação, graça e segurança da salvação. Visual o suficiente para fixar depois de uma leitura só.</p>
+        </div>
+      </div>
+
+      <div class="deliv-row">
+        <svg class="deliv-icon" viewBox="0 0 48 48" fill="none">
+          <circle cx="24" cy="20" r="9" stroke="currentColor" stroke-width="1.4"/>
+          <path d="M14 38 C14 30 34 30 34 38" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+          <line x1="38" y1="12" x2="44" y2="8" stroke="currentColor" stroke-width="1.2"/>
+          <line x1="38" y1="20" x2="44" y2="20" stroke="currentColor" stroke-width="1.2"/>
+        </svg>
+        <div>
+          <p class="deliv-name">Infográfico do contexto histórico <span class="tag tag-main">Principal</span></p>
+          <p class="deliv-desc">De 1517 ao Sínodo de Dort em 1618. Quem eram Calvino e Arminius, por que o debate surgiu e quais denominações seguem cada tradição hoje. Tudo em uma linha do tempo visual.</p>
+        </div>
+      </div>
+
+      <div class="deliv-row">
+        <svg class="deliv-icon" viewBox="0 0 48 48" fill="none">
+          <rect x="10" y="14" width="24" height="28" rx="1" stroke="currentColor" stroke-width="1.4" transform="rotate(-6 22 28)"/>
+          <rect x="14" y="10" width="24" height="28" rx="1" stroke="currentColor" stroke-width="1.4" fill="var(--cream)"/>
+          <line x1="19" y1="18" x2="33" y2="18" stroke="currentColor" stroke-width="1"/>
+          <line x1="19" y1="23" x2="33" y2="23" stroke="currentColor" stroke-width="1" opacity="0.6"/>
+        </svg>
+        <div>
+          <p class="deliv-name">Flashcards de revisão <span class="tag tag-bonus">Bônus</span></p>
+          <p class="deliv-desc">Pergunta de um lado, resposta do outro. Para revisar os conceitos quando quiser, no celular, antes da célula ou de uma conversa sobre o assunto.</p>
+        </div>
+      </div>
+
+      <div class="deliv-row">
+        <svg class="deliv-icon" viewBox="0 0 48 48" fill="none">
+          <circle cx="24" cy="24" r="17" stroke="currentColor" stroke-width="1.4"/>
+          <path d="M17 24 L22 29 L32 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div>
+          <p class="deliv-name">Quiz interativo <span class="tag tag-bonus">Bônus</span></p>
+          <p class="deliv-desc">Teste o que aprendeu. Fixação ativa retém muito mais que leitura passiva. O quiz transforma o material em conhecimento que fica.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- OFERTA -->
+<section class="offer" id="oferta">
+  <div class="wrap">
+    <p class="section-label" style="margin-bottom: 20px;">Sua oferta</p>
+
+    <div class="value-bar">
+      Um livro introdutório sobre o mesmo tema custa entre R$40 e R$80, tem 200 páginas e você provavelmente não vai terminar. Aqui você entende tudo em uma tarde, por <strong>R$16,90</strong>.
+    </div>
+
+    <div class="offer-grid">
+
+      <!-- CARD PREMIUM (oferta única) -->
+      <div class="offer-card-premium">
+        <p class="offer-eyebrow-premium">Calvinismo e Arminianismo, ponto a ponto</p>
+        <p class="offer-price-old-premium">De R$ 87,00</p>
+        <div class="offer-price-premium"><sup>R$</sup>16<span class="offer-price-cents">,90</span></div>
+        <div class="premium-saving">Você economiza R$ 70,10</div>
+        <p class="offer-note-premium">Acesso imediato por e-mail</p>
+
+        <p class="premium-extras-label">O que está incluso</p>
+        <ul class="offer-list-premium-extras">
+          <li>✓ <strong>3 Infográficos visuais</strong> <br><small style="opacity:0.6;font-size: 12.2px;font-weight:400;">TULIP vs FACTS, diferenças ponto a ponto e contexto histórico.</small></li>
+          <li>✓ <strong>O Grande Debate Soteriológico</strong> <span class="item-price">R$19,90</span><br><small style="opacity:0.6;font-size: 12.2px;font-weight:400;">Entenda por que o debate existe e qual ponto está realmente em disputa.</small></li>
+          <li>✓ <strong>Fé, História e Doutrina</strong> <span class="item-price">R$19,90</span><br><small style="opacity:0.6;font-size: 12.2px;font-weight:400;">Veja como o contexto histórico moldou cada sistema, de 1517 até hoje.</small></li>
+          <li>✓ <strong>A Salvação em Debate</strong> <span class="item-price">R$19,90</span><br><small style="opacity:0.6;font-size: 12.2px;font-weight:400;">Compare eleição, graça, expiação e perseverança sem confusão.</small></li>
+          <li>✓ <strong>Flashcards de revisão</strong> <span class="item-bonus">Bônus</span></li>
+          <li>✓ <strong>Quiz interativo</strong> <span class="item-bonus">Bônus</span></li>
+        </ul>
+
+        <a href="https://pay.kiwify.com.br/5LUX691" class="btn-premium" target="_blank">Quero garantir meu acesso</a>
+        <p class="offer-safe-premium">🔒 Kiwify · Garantia de 7 dias</p>
+      </div>
+
+    </div>
+    <p style="text-align:center; margin-top: 22px; font-size: 14.3px; color: var(--ink-light);">Ou leve mais 2 estudos junto com esse, por menos do que separado. <a href="#upsell" style="color: var(--arm); font-weight: 700; text-decoration: underline;">Veja o combo completo ↓</a></p>
+  </div>
+</section>
+
+<!-- UPSELL -->
+<section class="upsell-vsl" id="upsell">
+  <div class="wrap">
+    <div class="upsell-ribbon"><span>Só disponível nesta página</span></div>
+    <p class="upsell-vsl-eyebrow">Antes de fechar, uma escolha melhor</p>
+    <h2 class="upsell-vsl-title">Depois do Calvinismo, os próximos dois debates que vão bater na sua porta são <em>Cessacionismo x Continuísmo</em> e o <em>Arrebatamento</em>. Resolva os três agora, de uma vez, pagando menos do que qualquer um sozinho depois.</h2>
+    <p class="upsell-vsl-sub">Quem compra os 3 materiais separados paga R$56,70. Aqui, só enquanto você está fechando essa compra, você leva os três por R$37 — uma economia maior do que o preço do material de Cessacionismo sozinho. Essa condição não aparece em nenhum outro lugar do site.</p>
+  </div>
+
+  <!-- VEJA POR DENTRO: prints reais do material, sem borrão -->
+  <div class="upsell-marquee-section">
+    <p class="upsell-marquee-label">Veja por dentro — o material real, do jeito que você recebe</p>
+    <div class="upsell-marquee">
+      <div class="upsell-marquee-track">
+        <div class="upsell-marquee-frame"><img src="assets/upsell/print-capa-sumario.jpg" alt="Capa e sumário do material"></div>
+        <div class="upsell-marquee-frame"><img src="assets/upsell/print-parte1.jpg" alt="Abertura da Parte 1, Fundamentos Bíblicos"></div>
+        <div class="upsell-marquee-frame"><img src="assets/upsell/print-tabela.jpg" alt="Tabela comparativa das três posições"></div>
+        <div class="upsell-marquee-frame"><img src="assets/upsell/print-parte5.jpg" alt="Abertura da Parte 5, Dom por Dom"></div>
+        <div class="upsell-marquee-frame"><img src="assets/upsell/print-apresentacao1.jpg" alt="Apresentação visual do kit, capa e introdução"></div>
+        <div class="upsell-marquee-frame"><img src="assets/upsell/print-apresentacao2.jpg" alt="Apresentação visual do kit, ponto de consenso"></div>
+        <div class="upsell-marquee-frame"><img src="assets/upsell/pagina-texto.jpg" alt="Página de texto do material"></div>
+        <div class="upsell-marquee-frame"><img src="assets/upsell/linha-do-tempo.jpg" alt="Linha do tempo histórica"></div>
+        <div class="upsell-marquee-frame"><img src="assets/upsell/glossario.jpg" alt="Glossário de termos do material"></div>
+        <!-- set duplicado para loop contínuo -->
+        <div class="upsell-marquee-frame" aria-hidden="true"><img src="assets/upsell/print-capa-sumario.jpg" alt=""></div>
+        <div class="upsell-marquee-frame" aria-hidden="true"><img src="assets/upsell/print-parte1.jpg" alt=""></div>
+        <div class="upsell-marquee-frame" aria-hidden="true"><img src="assets/upsell/print-tabela.jpg" alt=""></div>
+        <div class="upsell-marquee-frame" aria-hidden="true"><img src="assets/upsell/print-parte5.jpg" alt=""></div>
+        <div class="upsell-marquee-frame" aria-hidden="true"><img src="assets/upsell/print-apresentacao1.jpg" alt=""></div>
+        <div class="upsell-marquee-frame" aria-hidden="true"><img src="assets/upsell/print-apresentacao2.jpg" alt=""></div>
+        <div class="upsell-marquee-frame" aria-hidden="true"><img src="assets/upsell/pagina-texto.jpg" alt=""></div>
+        <div class="upsell-marquee-frame" aria-hidden="true"><img src="assets/upsell/linha-do-tempo.jpg" alt=""></div>
+        <div class="upsell-marquee-frame" aria-hidden="true"><img src="assets/upsell/glossario.jpg" alt=""></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+
+    <div class="upsell-showcase">
+
+      <div class="upsell-product">
+        <div class="upsell-product-cover">
+          <img src="assets/prints/premium/premium_1_capa.webp" alt="Capa do material Calvinismo e Arminianismo">
+        </div>
+        <p class="upsell-product-name">Calvinismo e Arminianismo, ponto a ponto</p>
+        <ul class="upsell-kit-list">
+          <li class="upsell-kit-item">
+            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20V10M12 20V4M20 20v-7"/></svg></span>
+            <span class="txt"><strong>3 Infográficos</strong><small>TULIP vs FACTS, diferenças ponto a ponto e contexto histórico</small></span>
+          </li>
+          <li class="upsell-kit-item">
+            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5.5c2-1 5-1 8 0v13c-3-1-6-1-8 0zM20 5.5c-2-1-5-1-8 0v13c3-1 6-1 8 0z"/></svg></span>
+            <span class="txt"><strong>3 e-books completos</strong><small>O Grande Debate Soteriológico, Fé História e Doutrina, A Salvação em Debate</small></span>
+          </li>
+          <li class="upsell-kit-item">
+            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="4" width="12" height="16" rx="1.5" transform="rotate(-8 10 12)"/><path d="M14 9l5 2-4 9-5-2"/></svg></span>
+            <span class="txt"><strong>Flashcards + Quiz interativo</strong><small>Pra revisar e fixar o que você aprendeu</small></span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="upsell-plus">+</div>
+
+      <div class="upsell-product">
+        <div class="upsell-product-cover">
+          <img src="assets/upsell/cessacionismo-capa.jpg" alt="Capa do material Cessacionismo, Providencialismo e Continuísmo">
+        </div>
+        <p class="upsell-product-name">Cessacionismo, Providencialismo e Continuísmo</p>
+        <ul class="upsell-kit-list">
+          <li class="upsell-kit-item">
+            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 6h16M4 12h16M4 18h10"/></svg></span>
+            <span class="txt"><strong>Guia completo em 8 módulos</strong><small>Da base bíblica até a aplicação prática, sem pular etapas</small></span>
+          </li>
+          <li class="upsell-kit-item">
+            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M10 9l5 3-5 3z" fill="currentColor" stroke="none"/></svg></span>
+            <span class="txt"><strong>Vídeo-resumo</strong><small>As três posições explicadas em vídeo</small></span>
+          </li>
+          <li class="upsell-kit-item">
+            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 13a8 8 0 0116 0M6 13v5a2 2 0 002 2h1v-7H8a2 2 0 00-2 2zM18 13v5a2 2 0 01-2 2h-1v-7h1a2 2 0 012 2z"/></svg></span>
+            <span class="txt"><strong>Audiocast Dons Espirituais</strong><small>Pra ouvir enquanto dirige, treina ou trabalha</small></span>
+          </li>
+          <li class="upsell-kit-item">
+            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="6" height="16" rx="1"/><rect x="9.5" y="4" width="6" height="16" rx="1"/><rect x="16" y="4" width="5" height="16" rx="1"/></svg></span>
+            <span class="txt"><strong>Infográficos + tabela comparativa</strong><small>As 3 posições lado a lado, com linha do tempo e glossário</small></span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="upsell-plus">+</div>
+
+      <div class="upsell-product">
+        <div class="upsell-product-cover mock">
+          <svg class="mock-star" viewBox="0 0 220 220" fill="none"><circle cx="110" cy="110" r="100" stroke="currentColor" stroke-width="0.8"/><circle cx="110" cy="110" r="70" stroke="currentColor" stroke-width="0.5"/><path d="M110 50 L118 102 L170 110 L118 118 L110 170 L102 118 L50 110 L102 102 Z" stroke="currentColor" stroke-width="0.6" fill="none"/></svg>
+          <span class="mock-soon">Em breve</span>
+          <p class="mock-kicker">Guia de estudo</p>
+          <p class="mock-title">Arrebatamento</p>
+          <p class="mock-pages">156 páginas</p>
+        </div>
+        <p class="upsell-product-name">Guia de Estudo sobre o Arrebatamento</p>
+        <ul class="upsell-kit-list">
+          <li class="upsell-kit-item">
+            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 4h9a3 3 0 013 3v13l-7.5-4L3 20V7a3 3 0 013-3z"/></svg></span>
+            <span class="txt"><strong>Guia de estudo completo</strong><small>Pré, meso-pré e pós-tribulacionismo lado a lado, com os textos decisivos do debate</small></span>
+          </li>
+          <li class="upsell-kit-item">
+            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v4M12 17v4M5 12H3M21 12h-2M6.5 6.5L5 5M19 19l-1.5-1.5M6.5 17.5L5 19M19 5l-1.5 1.5"/><circle cx="12" cy="12" r="4"/></svg></span>
+            <span class="txt"><strong>As correntes frente a frente</strong><small>De onde vem cada posição e como elas se sustentam na Bíblia</small></span>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- PROVA VISUAL: prints reais do material de cessacionismo -->
+    <div class="upsell-proof">
+      <p class="upsell-proof-label">Páginas e infográficos reais do material de Cessacionismo, Providencialismo e Continuísmo</p>
+      <div class="upsell-proof-grid">
+        <div class="upsell-proof-card"><img src="assets/upsell/infografico-cessacionismo.jpg" alt="Infográfico completo: Cessacionismo"></div>
+        <div class="upsell-proof-card"><img src="assets/upsell/infografico-providencialismo.jpg" alt="Infográfico completo: Providencialismo"></div>
+        <div class="upsell-proof-card"><img src="assets/upsell/infografico-continuismo.jpg" alt="Infográfico completo: Continuísmo"></div>
+        <div class="upsell-proof-card"><img src="assets/upsell/tabela-comparativa.jpg" alt="Tabela comparativa das três posições"></div>
+        <div class="upsell-proof-card"><img src="assets/upsell/print-capa-sumario.jpg" alt="Capa e sumário do material"></div>
+        <div class="upsell-proof-card"><img src="assets/upsell/print-parte1.jpg" alt="Abertura da Parte 1, Fundamentos Bíblicos"></div>
+      </div>
+    </div>
+
+    <div class="upsell-vsl-footer">
+      <ul class="upsell-breakdown">
+        <li><span>✓ Calvinismo e Arminianismo, ponto a ponto</span> <span class="item-old">R$16,90</span></li>
+        <li><span>✓ Cessacionismo, Providencialismo e Continuísmo</span> <span class="item-old">R$19,90</span></li>
+        <li><span>✓ Guia de Estudo sobre o Arrebatamento</span> <span class="item-old">R$19,90</span></li>
+      </ul>
+      <div class="upsell-breakdown-total"><span>Valor total se comprado avulso</span> <span class="total-old">R$56,70</span></div>
+      <div class="upsell-vsl-price"><sup>R$</sup>37<span class="offer-price-cents">,00</span></div>
+      <p class="upsell-vsl-price-note">Os 3 materiais juntos — economize R$19,70</p>
+      <a href="https://pay.kiwify.com.br/28gzTaK" class="btn-mega" target="_blank">Sim, quero os 3 estudos completos por R$37</a>
+      <p class="upsell-vsl-safe">🔒 Kiwify · Garantia de 7 dias</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="wrap">
+    <p class="section-label">Perguntas frequentes</p>
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="faqToggle(this)">
+          Se eu não gostar, posso pedir reembolso?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">Sim. Você tem 7 dias de garantia a partir da compra. Não gostou? Devolvemos seu dinheiro, sem burocracia.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="faqToggle(this)">
+          É PDF ou preciso instalar algo?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">Arquivos digitais. Você recebe por e-mail logo após a compra e abre no celular, tablet ou computador, sem instalar nada.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="faqToggle(this)">
+          Por que tão barato se o assunto é tão importante?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">Porque o formato visual elimina o custo de produção de um livro. Você paga pelo conteúdo, não pela impressão ou pela livraria. Barato por escolha, não por falta de qualidade.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="faqToggle(this)">
+          Posso usar em aula, célula ou grupo de estudos?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">Sim. Os infográficos são pensados exatamente para isso. Projetar na tela, compartilhar com o grupo ou usar como apoio para quem não tem tempo de ler livros longos.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="faqToggle(this)">
+          Funciona bem no celular?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">Sim. Texto grande e visual claro, pensados para leitura confortável em qualquer tela.</div></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- COMO FOI FEITO -->
+<section class="how-made">
+  <div class="wrap">
+    <h2>Como este material foi construído</h2>
+    <p>Este conteúdo não nasceu de opinião pessoal nem de resumo apressado de internet. Cada ponto foi construído a partir de leitura teológica séria — livros de referência sobre o tema, materiais de estudo usados por quem já debruçou anos sobre essas questões, e comparação entre diferentes perspectivas antes de chegar a uma explicação clara e justa para ambos os lados.</p>
+    <p>O objetivo aqui não foi "vencer um debate", mas entregar pra você um material que resista a pergunta difícil, com honestidade sobre onde cada posição é forte e onde ela é discutível. Não é teologia de rede social. É estudo.</p>
+  </div>
+</section>
+
+<script>
+function faqToggle(btn) {
+  const item = btn.closest('.faq-item');
+  const wasOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+  if (!wasOpen) item.classList.add('open');
+}
+</script>
+</body>
+</html>
+
