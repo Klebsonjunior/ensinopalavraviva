@@ -565,6 +565,16 @@ body {
 }
 
 .upsell-proof { margin: 8px auto 40px; max-width: 660px; text-align: center; }
+
+.upsell-proof-btn {
+  display: inline-block; cursor: pointer;
+  background: transparent; border: 2px solid var(--gold-line); color: var(--gold-line);
+  font-size: 15.3px; font-weight: 800; padding: 16px 30px;
+  letter-spacing: 0.01em; transition: background .15s, color .15s;
+}
+.upsell-proof-btn:hover { background: var(--gold-line); color: var(--ink); }
+.upsell-proof-btn-note { font-size: 12.6px; color: rgba(250,248,243,0.55); margin-top: 10px; }
+
 .upsell-proof-label {
   font-size: 13.3px; font-weight: 700; color: rgba(250,248,243,0.7);
   margin-bottom: 16px; line-height: 1.5;
@@ -620,6 +630,45 @@ body {
 .btn-mega:hover { filter: brightness(1.06); transform: translateY(-1px); }
 
 .upsell-vsl-safe { margin-top: 14px; font-size: 12.6px; color: rgba(250,248,243,0.55); }
+
+/* LIGHTBOX: visualizador de imagens navegavel */
+.proof-lightbox {
+  display: none; position: fixed; inset: 0; z-index: 9999;
+  background: rgba(11,26,43,0.96);
+  align-items: center; justify-content: center;
+  padding: 24px;
+}
+.proof-lightbox.open { display: flex; }
+.proof-lightbox img {
+  max-width: min(90vw, 640px); max-height: 82vh;
+  object-fit: contain; border: 2px solid var(--gold-line);
+  box-shadow: 0 30px 70px -20px rgba(0,0,0,0.7);
+}
+.proof-lightbox-close, .proof-lightbox-nav {
+  position: absolute; background: rgba(250,248,243,0.08);
+  border: 1px solid rgba(201,168,76,0.5); color: #FAF8F3;
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  transition: background .15s;
+}
+.proof-lightbox-close:hover, .proof-lightbox-nav:hover { background: rgba(201,168,76,0.25); }
+.proof-lightbox-close {
+  top: 20px; right: 20px; width: 42px; height: 42px; font-size: 18px;
+}
+.proof-lightbox-nav {
+  top: 50%; transform: translateY(-50%); width: 48px; height: 64px; font-size: 30px;
+}
+.proof-lightbox-nav.prev { left: 12px; }
+.proof-lightbox-nav.next { right: 12px; }
+.proof-lightbox-counter {
+  position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
+  font-size: 13.3px; color: rgba(250,248,243,0.7); letter-spacing: 0.04em;
+}
+@media (max-width: 560px) {
+  .proof-lightbox-nav { width: 40px; height: 56px; font-size: 24px; }
+  .proof-lightbox-nav.prev { left: 4px; }
+  .proof-lightbox-nav.next { right: 4px; }
+}
+
 
 @media (max-width: 560px) {
   .upsell-vsl-title { font-size: 23px; }
@@ -1000,20 +1049,10 @@ body {
 
     </div>
 
-    <!-- PROVA VISUAL: paginas do guia (nitidas) + infograficos (borrados) -->
+    <!-- PROVA VISUAL: botao abre lightbox com as paginas do guia (nitidas); infograficos ficam borrados abaixo -->
     <div class="upsell-proof">
-      <p class="upsell-proof-label">Páginas reais do material de Cessacionismo, Providencialismo e Continuísmo</p>
-      <div class="upsell-proof-grid">
-        <div class="upsell-proof-card sharp"><img src="assets/upsell/print-capa-sumario.jpg" alt="Capa e sumário do material" draggable="false"></div>
-        <div class="upsell-proof-card sharp"><img src="assets/upsell/print-parte1.jpg" alt="Abertura da Parte 1, Fundamentos Bíblicos" draggable="false"></div>
-        <div class="upsell-proof-card sharp"><img src="assets/upsell/print-parte5.jpg" alt="Abertura da Parte 5, Dom por Dom" draggable="false"></div>
-        <div class="upsell-proof-card sharp"><img src="assets/upsell/print-apresentacao1.jpg" alt="Apresentação visual do kit, capa e introdução" draggable="false"></div>
-        <div class="upsell-proof-card sharp"><img src="assets/upsell/print-apresentacao2.jpg" alt="Apresentação visual do kit, ponto de consenso" draggable="false"></div>
-        <div class="upsell-proof-card sharp"><img src="assets/upsell/pagina-texto.jpg" alt="Página de texto do material" draggable="false"></div>
-        <div class="upsell-proof-card sharp"><img src="assets/upsell/linha-do-tempo.jpg" alt="Linha do tempo histórica" draggable="false"></div>
-        <div class="upsell-proof-card sharp"><img src="assets/upsell/glossario.jpg" alt="Glossário de termos do material" draggable="false"></div>
-        <div class="upsell-proof-card sharp"><img src="assets/upsell/tabela-comparativa.jpg" alt="Tabela comparativa das três posições" draggable="false"></div>
-      </div>
+      <button type="button" class="upsell-proof-btn" onclick="openProofGallery()">🔍 Ver imagens reais do produto</button>
+      <p class="upsell-proof-btn-note">9 páginas reais do material de Cessacionismo, Providencialismo e Continuísmo</p>
 
       <p class="upsell-proof-label" style="margin-top:34px;">Infográficos completos — prévia</p>
       <div class="upsell-proof-grid">
@@ -1032,6 +1071,56 @@ body {
     </div>
   </div>
 </section>
+
+<!-- LIGHTBOX: galeria navegavel das paginas reais do produto de cessacionismo -->
+<div id="proofLightbox" class="proof-lightbox" onclick="if(event.target===this) closeProofGallery()">
+  <button type="button" class="proof-lightbox-close" onclick="closeProofGallery()" aria-label="Fechar">✕</button>
+  <button type="button" class="proof-lightbox-nav prev" onclick="proofNav(-1)" aria-label="Anterior">‹</button>
+  <img id="proofLightboxImg" src="" alt="">
+  <button type="button" class="proof-lightbox-nav next" onclick="proofNav(1)" aria-label="Próxima">›</button>
+  <p id="proofLightboxCounter" class="proof-lightbox-counter"></p>
+</div>
+<script>
+  var proofImages = [
+    { src: "assets/upsell/print-capa-sumario.jpg", alt: "Capa e sumário do material" },
+    { src: "assets/upsell/print-parte1.jpg", alt: "Abertura da Parte 1, Fundamentos Bíblicos" },
+    { src: "assets/upsell/print-parte5.jpg", alt: "Abertura da Parte 5, Dom por Dom" },
+    { src: "assets/upsell/print-apresentacao1.jpg", alt: "Apresentação visual do kit, capa e introdução" },
+    { src: "assets/upsell/print-apresentacao2.jpg", alt: "Apresentação visual do kit, ponto de consenso" },
+    { src: "assets/upsell/pagina-texto.jpg", alt: "Página de texto do material" },
+    { src: "assets/upsell/linha-do-tempo.jpg", alt: "Linha do tempo histórica" },
+    { src: "assets/upsell/glossario.jpg", alt: "Glossário de termos do material" },
+    { src: "assets/upsell/tabela-comparativa.jpg", alt: "Tabela comparativa das três posições" }
+  ];
+  var proofIndex = 0;
+
+  function renderProofImage() {
+    var item = proofImages[proofIndex];
+    document.getElementById("proofLightboxImg").src = item.src;
+    document.getElementById("proofLightboxImg").alt = item.alt;
+    document.getElementById("proofLightboxCounter").textContent = (proofIndex + 1) + " / " + proofImages.length;
+  }
+  function openProofGallery() {
+    proofIndex = 0;
+    renderProofImage();
+    document.getElementById("proofLightbox").classList.add("open");
+    document.body.style.overflow = "hidden";
+  }
+  function closeProofGallery() {
+    document.getElementById("proofLightbox").classList.remove("open");
+    document.body.style.overflow = "";
+  }
+  function proofNav(dir) {
+    proofIndex = (proofIndex + dir + proofImages.length) % proofImages.length;
+    renderProofImage();
+  }
+  document.addEventListener("keydown", function(e) {
+    if (!document.getElementById("proofLightbox").classList.contains("open")) return;
+    if (e.key === "Escape") closeProofGallery();
+    if (e.key === "ArrowLeft") proofNav(-1);
+    if (e.key === "ArrowRight") proofNav(1);
+  });
+</script>
 
 
 <!-- FAQ -->
