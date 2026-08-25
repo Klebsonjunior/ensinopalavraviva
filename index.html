@@ -606,7 +606,19 @@ body {
 .upsell-vsl-footer {
   text-align: center; border-top: 2px dashed var(--gold-line); padding-top: 36px;
   max-width: 460px; margin: 0 auto;
-}.upsell-vsl-old-price { font-size: 14.6px; color: rgba(250,248,243,0.55); text-decoration: line-through; }
+}
+.upsell-value-stack {
+  list-style: none; text-align: left; margin-bottom: 18px;
+  display: flex; flex-direction: column; gap: 9px;
+}
+.upsell-value-stack li {
+  display: flex; justify-content: space-between; align-items: baseline; gap: 12px;
+  font-size: 13.3px; color: rgba(250,248,243,0.8);
+  border-bottom: 1px dotted rgba(201,168,76,0.3); padding-bottom: 8px;
+}
+.upsell-value-stack li span { flex: 1; }
+.upsell-value-stack li strong { color: var(--gold-line); font-weight: 800; white-space: nowrap; }
+.upsell-vsl-old-price { font-size: 14.6px; color: rgba(250,248,243,0.55); text-decoration: line-through; }
 .upsell-vsl-price {
   font-family: 'Playfair Display', serif; font-weight: 700; color: #FAF8F3;
   font-size: 62px; line-height: 1; margin: 8px 0 4px;
@@ -984,7 +996,7 @@ body {
     <div class="upsell-ribbon"><span>Só disponível nesta página, só agora</span></div>
     <p class="upsell-vsl-eyebrow">Antes de fechar, uma pergunta</p>
     <h2 class="upsell-vsl-title">Calvinismo x Arminianismo foi só a primeira dúvida. <em>Cessacionismo x Continuísmo</em> e o <em>Arrebatamento</em> são as próximas duas — e vão aparecer mais cedo do que você imagina.</h2>
-    <p class="upsell-vsl-sub">Você pode resolver as três agora, de uma vez, e nunca mais precisar procurar material confiável quando a dúvida chegar. Comprando separado, esses 3 materiais saem por R$56,70. Fechando o combo agora, saem por R$37 — R$19,70 mais barato, o suficiente pra pagar o material de Cessacionismo sozinho. Depois que você sair desta página, essa condição não volta.</p>
+    <p class="upsell-vsl-sub">Você pode resolver as três agora, de uma vez, e nunca mais precisar procurar material confiável quando a dúvida chegar. Somando o valor de cada material — Calvinismo, Cessacionismo e o Guia do Arrebatamento — o combo vale R$233,90. Fechando agora, você leva os três por R$37 — uma economia de R$196,90, maior do que o valor de qualquer um dos três sozinho. Depois que você sair desta página, essa condição não volta.</p>
 
     <div class="upsell-showcase">
 
@@ -1063,9 +1075,14 @@ body {
     </div>
 
     <div class="upsell-vsl-footer">
-      <p class="upsell-vsl-old-price">Separado: R$16,90 + R$19,90 + R$19,90 = R$56,70</p>
+      <ul class="upsell-value-stack">
+        <li><span>Calvinismo e Arminianismo, ponto a ponto</span><strong>R$87,00</strong></li>
+        <li><span>Cessacionismo, Providencialismo e Continuísmo (kit completo)</span><strong>R$97,00</strong></li>
+        <li><span>Guia de Estudo sobre o Arrebatamento (156 páginas)</span><strong>R$49,90</strong></li>
+      </ul>
+      <p class="upsell-vsl-old-price">Valor total se comprado avulso: R$233,90</p>
       <div class="upsell-vsl-price"><sup>R$</sup>37<span class="offer-price-cents">,00</span></div>
-      <p class="upsell-vsl-price-note">Os 3 materiais juntos — economize R$19,70</p>
+      <p class="upsell-vsl-price-note">Os 3 materiais juntos — economize R$196,90</p>
       <a href="https://pay.kiwify.com.br/28gzTaK" class="btn-mega" target="_blank">Sim, quero os 3 estudos completos por R$37</a>
       <p class="upsell-vsl-safe">🔒 Sem letra miúda, sem pegadinha depois · Kiwify · Garantia de 7 dias</p>
     </div>
