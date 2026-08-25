@@ -289,6 +289,7 @@ body {
 .hero-price b { color: var(--arm); font-weight: 800; font-size: 18.4px; }
 
 .hero-guarantee { font-size: 14.3px; color: var(--ink-light); }
+.hero-urgency { font-size: 13.3px; color: var(--arm); font-weight: 700; margin-top: 8px; }
 
 /* DOR */
 .pain {
@@ -313,6 +314,17 @@ body {
   width: 7px; height: 7px; border-radius: 50%;
   background: var(--arm); flex-shrink: 0; margin-top: 9px;
 }
+
+/* MID-CTA: reforco de conversao entre secoes, antes da oferta */
+.mid-cta { text-align: center; margin-top: 30px; }
+.btn-mid-cta {
+  display: inline-block; text-decoration: none;
+  background: var(--arm); color: #FAF8F3;
+  font-size: 15.3px; font-weight: 800; padding: 15px 30px;
+  box-shadow: 0 10px 26px -8px rgba(0,0,0,0.35);
+  transition: filter .15s, transform .15s;
+}
+.btn-mid-cta:hover { filter: brightness(1.08); transform: translateY(-1px); }
 
 /* ENTREGAVEIS */
 .deliverables { padding: 56px 0; border-bottom: 1px solid var(--border); }
@@ -849,6 +861,7 @@ body {
       <a href="#oferta" class="btn-primary">Quero entender de uma vez</a>
       <p class="hero-price">De <s>R$87,00</s> por <b>R$16,90</b></p>
       <p class="hero-guarantee">Acesso imediato por e-mail. Garantia de 7 dias.</p>
+      <p class="hero-urgency">⏳ Preço de lançamento — pode subir a qualquer momento, sem aviso.</p>
     </div>
   </div>
 </section>
@@ -876,6 +889,9 @@ body {
       <span class="pain-dot"></span>
       <span>Os livros sobre o assunto são longos e densos. Você começa e não termina.</span>
     </div>
+  </div>
+  <div class="mid-cta">
+    <a href="#oferta" class="btn-mid-cta">Quero resolver isso agora →</a>
   </div>
 </div>
 
@@ -948,6 +964,10 @@ body {
         </div>
       </div>
 
+    </div>
+
+    <div class="mid-cta">
+      <a href="#oferta" class="btn-mid-cta">Ver a oferta completa →</a>
     </div>
   </div>
 </section>
@@ -1184,6 +1204,22 @@ body {
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-a"><div class="faq-a-inner">Sim. Texto grande e visual claro, pensados para leitura confortável em qualquer tela.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="faqToggle(this)">
+          Como sei que a compra é segura?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">O pagamento é processado pela Kiwify, plataforma que cuida da cobrança, da nota fiscal e da entrega do produto. Seus dados de cartão não passam por nós — a Kiwify é responsável por toda a parte de pagamento.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="faqToggle(this)">
+          Quem produziu esse material?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">Preferimos manter o material em foco, não a autoria — por isso não expomos nome ou credencial pessoal. O que garante a qualidade é o rigor da pesquisa por trás do conteúdo: veja mais na seção "Como este material foi construído", logo abaixo.</div></div>
       </div>
 
     </div>
