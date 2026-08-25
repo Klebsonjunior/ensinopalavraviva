@@ -520,39 +520,44 @@ body {
 /* SHOWCASE: as 3 capas lado a lado, visualmente unidas por + */
 .upsell-showcase {
   display: flex; align-items: stretch; justify-content: center;
-  gap: 0; margin-bottom: 40px; flex-wrap: wrap;
+  gap: 0; margin-bottom: 44px; flex-wrap: nowrap;
 }
 .upsell-product {
   background: #FAF8F3; border: 2px solid var(--gold-line);
-  width: 220px; padding: 14px 14px 18px;
+  flex: 1 1 0; min-width: 0; max-width: 240px;
+  padding: 20px 18px 22px;
   text-align: center;
   box-shadow: 0 18px 40px -14px rgba(0,0,0,0.5);
+  display: flex; flex-direction: column;
 }
 .upsell-product-cover {
   width: 100%; aspect-ratio: 3/4; overflow: hidden;
-  margin-bottom: 12px; background: var(--parch);
+  margin-bottom: 16px; background: var(--parch);
   border: 1px solid var(--border);
 }
 .upsell-product-cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .upsell-product-cover.mock {
   display: flex; flex-direction: column; align-items: center; justify-content: center;
-  background: var(--cal); color: #FAF8F3; padding: 14px; gap: 8px;
+  background: var(--cal); color: #FAF8F3; padding: 14px; gap: 10px;
 }
-.upsell-product-cover.mock .mock-kicker { font-size: 9.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold-line); font-weight: 800; }
-.upsell-product-cover.mock .mock-title { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 700; line-height: 1.25; }
-.upsell-product-cover.mock .mock-pages { font-size: 11.5px; color: rgba(250,248,243,0.6); border-top: 1px solid rgba(201,168,76,0.4); padding-top: 8px; margin-top: 4px; }
-.upsell-product-name { font-size: 13.6px; font-weight: 800; color: var(--ink); line-height: 1.3; margin-bottom: 8px; }
-.upsell-product-list { list-style: none; text-align: left; display: flex; flex-direction: column; gap: 5px; }
-.upsell-product-list li { font-size: 11.8px; color: var(--ink-mid); line-height: 1.4; }
+.upsell-product-cover.mock .mock-kicker { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold-line); font-weight: 800; }
+.upsell-product-cover.mock .mock-title { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; line-height: 1.25; }
+.upsell-product-cover.mock .mock-pages { font-size: 12px; color: rgba(250,248,243,0.65); border-top: 1px solid rgba(201,168,76,0.4); padding-top: 9px; margin-top: 5px; }
+.upsell-product-name {
+  font-size: 15.3px; font-weight: 800; color: var(--ink); line-height: 1.32;
+  margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--border);
+}
+.upsell-product-list { list-style: none; text-align: left; display: flex; flex-direction: column; gap: 9px; }
+.upsell-product-list li { font-size: 12.6px; color: var(--ink-mid); line-height: 1.5; }
 .upsell-plus {
   display: flex; align-items: center; justify-content: center;
-  width: 44px; font-family: 'Playfair Display', serif;
-  font-size: 30px; font-weight: 700; color: var(--gold-line);
+  flex: 0 0 auto; width: 36px; font-family: 'Playfair Display', serif;
+  font-size: 26px; font-weight: 700; color: var(--gold-line);
 }
-@media (max-width: 720px) {
-  .upsell-showcase { flex-direction: column; align-items: center; gap: 18px; }
-  .upsell-plus { width: auto; transform: rotate(90deg); }
-  .upsell-product { width: 100%; max-width: 300px; }
+@media (max-width: 780px) {
+  .upsell-showcase { flex-direction: column; align-items: center; gap: 22px; }
+  .upsell-plus { width: auto; padding: 2px 0; transform: rotate(90deg); }
+  .upsell-product { width: 100%; max-width: 320px; flex: 0 0 auto; }
 }
 
 .upsell-proof { margin: 8px auto 40px; max-width: 660px; text-align: center; }
@@ -562,13 +567,25 @@ body {
 }
 .upsell-proof-grid {
   display: grid; grid-template-columns: repeat(auto-fit, 130px);
-  gap: 8px; justify-content: center;
+  gap: 10px; justify-content: center;
 }
 .upsell-proof-card {
+  position: relative;
   aspect-ratio: 3/4; overflow: hidden; border: 1px solid rgba(201,168,76,0.4);
   background: var(--parch);
 }
-.upsell-proof-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.upsell-proof-card img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  filter: blur(6px) saturate(1.05); transform: scale(1.18);
+  user-select: none;
+}
+.upsell-proof-card::after {
+  content: "PRÉVIA";
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10.5px; font-weight: 800; letter-spacing: 0.08em;
+  color: #FAF8F3; background: rgba(11,26,43,0.28);
+}
 
 .upsell-vsl-footer {
   text-align: center; border-top: 2px dashed var(--gold-line); padding-top: 36px;
@@ -978,12 +995,12 @@ body {
     <div class="upsell-proof">
       <p class="upsell-proof-label">Páginas e infográficos reais do material de Cessacionismo, Providencialismo e Continuísmo</p>
       <div class="upsell-proof-grid">
-        <div class="upsell-proof-card"><img src="assets/upsell/infografico-cessacionismo.jpg" alt="Infográfico completo: Cessacionismo"></div>
-        <div class="upsell-proof-card"><img src="assets/upsell/infografico-providencialismo.jpg" alt="Infográfico completo: Providencialismo"></div>
-        <div class="upsell-proof-card"><img src="assets/upsell/infografico-continuismo.jpg" alt="Infográfico completo: Continuísmo"></div>
-        <div class="upsell-proof-card"><img src="assets/upsell/tabela-comparativa.jpg" alt="Tabela comparativa das três posições"></div>
-        <div class="upsell-proof-card"><img src="assets/upsell/print-capa-sumario.jpg" alt="Capa e sumário do material"></div>
-        <div class="upsell-proof-card"><img src="assets/upsell/print-parte1.jpg" alt="Abertura da Parte 1, Fundamentos Bíblicos"></div>
+        <div class="upsell-proof-card"><img src="assets/upsell/infografico-cessacionismo.jpg" alt="Infográfico completo: Cessacionismo" draggable="false"></div>
+        <div class="upsell-proof-card"><img src="assets/upsell/infografico-providencialismo.jpg" alt="Infográfico completo: Providencialismo" draggable="false"></div>
+        <div class="upsell-proof-card"><img src="assets/upsell/infografico-continuismo.jpg" alt="Infográfico completo: Continuísmo" draggable="false"></div>
+        <div class="upsell-proof-card"><img src="assets/upsell/tabela-comparativa.jpg" alt="Tabela comparativa das três posições" draggable="false"></div>
+        <div class="upsell-proof-card"><img src="assets/upsell/print-capa-sumario.jpg" alt="Capa e sumário do material" draggable="false"></div>
+        <div class="upsell-proof-card"><img src="assets/upsell/print-parte1.jpg" alt="Abertura da Parte 1, Fundamentos Bíblicos" draggable="false"></div>
       </div>
     </div>
 
