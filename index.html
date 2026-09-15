@@ -714,6 +714,35 @@ body {
   line-height: 1.75; margin-bottom: 14px;
 }
 .how-made p:last-child { margin-bottom: 0; }
+.authority-post {
+  max-width: 520px; margin: 34px auto 0; overflow: hidden;
+  background: #FAF8F3; border: 1px solid rgba(11,26,43,0.12);
+  border-radius: 14px; box-shadow: 0 16px 38px -20px rgba(11,26,43,0.42);
+  text-align: left;
+}
+.authority-post-head {
+  display: flex; align-items: center; gap: 11px; padding: 13px 14px;
+}
+.authority-post-avatar {
+  width: 38px; height: 38px; flex: 0 0 38px; border-radius: 50%;
+  object-fit: cover; object-position: center top; border: 2px solid var(--gold-line);
+}
+.authority-post-account { flex: 1; min-width: 0; }
+.authority-post-handle { display: block; color: var(--ink); font-size: 13px; font-weight: 800; }
+.authority-post-subtitle { display: block; color: var(--ink-light); font-size: 11px; margin-top: 2px; }
+.authority-post-follow {
+  border: 1px solid var(--border); border-radius: 6px; background: transparent;
+  color: var(--arm); font-size: 11px; font-weight: 800; padding: 7px 11px;
+}
+.authority-post-image { display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: center; }
+.authority-post-caption { padding: 18px 18px 20px; color: var(--ink-mid); font-size: 14px; line-height: 1.62; }
+.authority-post-caption p { margin: 0 0 13px; font-size: inherit; line-height: inherit; }
+.authority-post-caption p:last-child { margin-bottom: 0; }
+.authority-post-caption strong { color: var(--ink); }
+@media (max-width: 560px) {
+  .authority-post { width: 100%; margin-top: 28px; }
+  .authority-post-caption { padding: 16px; font-size: 13.2px; }
+}
 </style>
 </head>
 <body>
@@ -1136,6 +1165,21 @@ body {
     <h2>Como este material foi construído</h2>
     <p>Este conteúdo não nasceu de opinião pessoal nem de resumo apressado de internet. Cada ponto foi construído a partir de leitura teológica séria — livros de referência sobre o tema, materiais de estudo usados por quem já debruçou anos sobre essas questões, e comparação entre diferentes perspectivas antes de chegar a uma explicação clara e justa para ambos os lados.</p>
     <p>O objetivo aqui não foi "vencer um debate", mas entregar pra você um material que resista a pergunta difícil, com honestidade sobre onde cada posição é forte e onde ela é discutível. Não é teologia de rede social. É estudo.</p>
+    <article class="authority-post">
+      <header class="authority-post-head">
+        <img class="authority-post-avatar" src="assets/profile-avatar.jpg" alt="Representante segurando uma Bíblia">
+        <div class="authority-post-account">
+          <span class="authority-post-handle">@ensinopalavraviva</span>
+          <span class="authority-post-subtitle">Estudos bíblicos</span>
+        </div>
+        <button class="authority-post-follow" type="button">Seguir</button>
+      </header>
+      <img class="authority-post-image" src="assets/author-bible.jpg" alt="Autor segurando uma Bíblia em um ambiente de estudo">
+      <div class="authority-post-caption">
+        <p><strong>@ensinopalavraviva</strong> Este material não nasceu de uma opinião de rede social. Cada capítulo foi construído a partir de estudo teológico sério, com base em fontes reconhecidas sobre inspiração, transmissão do texto bíblico e história do cânon — não em achismo.</p>
+        <p>A página existe para isso: pegar um tema denso da teologia sistemática e entregar com clareza, sem simplificar a ponto de distorcer. É esse mesmo cuidado que está em cada página, infográfico e slide deste estudo.</p>
+      </div>
+    </article>
   </div>
 </section>
 
