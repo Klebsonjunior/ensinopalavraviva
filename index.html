@@ -718,7 +718,7 @@ body {
   max-width: 520px; margin: 34px auto 0; overflow: hidden;
   background: #FAF8F3; border: 1px solid rgba(11,26,43,0.12);
   border-radius: 14px; box-shadow: 0 16px 38px -20px rgba(11,26,43,0.42);
-  text-align: left;
+  text-align: left; cursor: pointer;
 }
 .authority-post-head {
   display: flex; align-items: center; gap: 11px; padding: 13px 14px;
@@ -1165,7 +1165,7 @@ body {
     <h2>Como este material foi construído</h2>
     <p>Este conteúdo não nasceu de opinião pessoal nem de resumo apressado de internet. Cada ponto foi construído a partir de leitura teológica séria — livros de referência sobre o tema, materiais de estudo usados por quem já debruçou anos sobre essas questões, e comparação entre diferentes perspectivas antes de chegar a uma explicação clara e justa para ambos os lados.</p>
     <p>O objetivo aqui não foi "vencer um debate", mas entregar pra você um material que resista a pergunta difícil, com honestidade sobre onde cada posição é forte e onde ela é discutível. Não é teologia de rede social. É estudo.</p>
-    <article class="authority-post">
+    <article class="authority-post" role="link" tabindex="0" onclick="window.open('https://www.instagram.com/ensinopalavraviva/', '_blank', 'noopener')" onkeydown="if(event.key === 'Enter' || event.key === ' ') { event.preventDefault(); window.open('https://www.instagram.com/ensinopalavraviva/', '_blank', 'noopener'); }">
       <header class="authority-post-head">
         <img class="authority-post-avatar" src="assets/profile-avatar.jpg" alt="Representante segurando uma Bíblia">
         <div class="authority-post-account">
