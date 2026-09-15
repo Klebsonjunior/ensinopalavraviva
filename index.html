@@ -380,7 +380,10 @@ body {
   font-size: 16.3px; color: var(--ink-mid); line-height: 1.65;
 }
 .value-bar strong { color: var(--arm); font-weight: 800; }
-
+.product-source-note {
+  max-width: 560px; margin: -12px auto 28px; color: var(--ink-light);
+  font-size: 14.3px; line-height: 1.55; text-align: center;
+}
 .offer-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -698,6 +701,8 @@ body {
   .proof-lightbox-nav { width: 40px; height: 56px; font-size: 24px; }
   .proof-lightbox-nav.prev { left: 4px; }
   .proof-lightbox-nav.next { right: 4px; }
+  .upsell-proof-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+  .upsell-proof-card { width: 150px; justify-self: center; }
 }
 
 
@@ -991,15 +996,16 @@ body {
       Um livro introdutório sobre o mesmo tema custa entre R$40 e R$80, tem 200 páginas e você provavelmente não vai terminar. Aqui você entende tudo em uma tarde, por <strong>R$16,90</strong>.
     </div>
 
+    <p class="product-source-note">Construído a partir de fontes e autores representativos das duas tradições, apresentando cada posição em seus próprios termos.</p>
+
     <div class="offer-grid">
 
       <!-- CARD PREMIUM (oferta única) -->
       <div class="offer-card-premium">
-        <p class="offer-eyebrow-premium">Calvinismo e Arminianismo, ponto a ponto</p>
-        <p class="offer-price-old-premium">De R$ 87,00</p>
+        <p class="offer-eyebrow-premium">ESTUDO COMPLETO</p>
+        <p class="offer-note-premium">Guia + comparativos + infográficos + linha histórica + materiais visuais</p>
+        <p class="offer-price-old-premium">R$22</p>
         <div class="offer-price-premium"><sup>R$</sup>16<span class="offer-price-cents">,90</span></div>
-        <div class="premium-saving">Você economiza R$ 70,10</div>
-        <p class="offer-note-premium">Acesso imediato por e-mail</p>
 
         <p class="premium-extras-label">O que está incluso</p>
         <ul class="offer-list-premium-extras">
@@ -1012,6 +1018,7 @@ body {
         </ul>
 
         <a href="https://pay.kiwify.com.br/5LUX691" class="btn-premium" target="_blank">Quero garantir meu acesso</a>
+        <a href="#upsell" class="offer-safe-premium" style="display:block; text-decoration:underline;">Quer levar os 3 estudos? Veja a coleção completa por R$37 →</a>
         <p class="offer-safe-premium">🔒 Kiwify · Garantia de 7 dias</p>
       </div>
 
