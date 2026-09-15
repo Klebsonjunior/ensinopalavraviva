@@ -578,14 +578,9 @@ body {
   font-size: 26px; font-weight: 700; color: var(--gold-line);
 }
 @media (max-width: 780px) {
-  .upsell-showcase { flex-direction: column; align-items: center; gap: 14px; }
-  .upsell-plus { width: auto; padding: 0; transform: rotate(90deg); }
-  .upsell-product { width: 100%; max-width: 340px; flex: 0 0 auto; padding: 14px 14px 16px; }
-  .upsell-product-cover { aspect-ratio: 3 / 4; max-height: 190px; }
-  .upsell-product-list { gap: 4px; }
-  .upsell-product-list li { font-size: 11.5px; line-height: 1.35; }
-  .upsell-preview-strip { gap: 5px; margin-top: 8px; }
-  .upsell-preview-strip img { width: 46px; height: 58px; }
+  .upsell-showcase { flex-direction: column; align-items: center; gap: 22px; }
+  .upsell-plus { width: auto; padding: 2px 0; transform: rotate(90deg); }
+  .upsell-product { width: 100%; max-width: 320px; flex: 0 0 auto; }
 }
 
 .upsell-proof { margin: 8px auto 40px; max-width: 660px; text-align: center; }
@@ -667,13 +662,6 @@ body {
 
 .upsell-vsl-safe { margin-top: 14px; font-size: 12.6px; color: rgba(250,248,243,0.55); }
 
-
-.upsell-preview-strip { display: flex; gap: 7px; margin: 10px 0 12px; justify-content: center; }
-.upsell-preview-strip img { width: 54px; height: 68px; object-fit: cover; border: 1px solid rgba(11,26,43,0.2); }
-.upsell-collection-title { font-size: 12px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: var(--gold-line); text-align: center; margin: 0 0 14px; }
-.upsell-collection-sub { font-size: 16px; color: rgba(250,248,243,0.78); line-height: 1.5; text-align: center; max-width: 600px; margin: 0 auto 28px; }
-.upsell-short-list { list-style: none; text-align: left; display: flex; flex-direction: column; gap: 4px; margin: 0; padding: 0; }
-.upsell-short-list li { font-size: 12px; color: var(--ink-mid); line-height: 1.4; }
 /* LIGHTBOX: visualizador de imagens navegavel */
 .proof-lightbox {
   display: none; position: fixed; inset: 0; z-index: 9999;
@@ -1007,10 +995,10 @@ body {
 
       <!-- CARD PREMIUM (oferta única) -->
       <div class="offer-card-premium">
-        <p class="offer-eyebrow-premium">Estudo completo: Calvinismo x Arminianismo</p>
-        <p class="offer-price-old-premium">De R$22</p>
+        <p class="offer-eyebrow-premium">Calvinismo e Arminianismo, ponto a ponto</p>
+        <p class="offer-price-old-premium">De R$ 87,00</p>
         <div class="offer-price-premium"><sup>R$</sup>16<span class="offer-price-cents">,90</span></div>
-        <div class="premium-saving">Você economiza R$5,10</div>
+        <div class="premium-saving">Você economiza R$ 70,10</div>
         <p class="offer-note-premium">Acesso imediato por e-mail</p>
 
         <p class="premium-extras-label">O que está incluso</p>
@@ -1035,32 +1023,47 @@ body {
 <!-- UPSELL -->
 <section class="upsell-vsl" id="upsell">
   <div class="wrap">
-    <p class="upsell-collection-title">COMPLETE SEUS ESTUDOS</p>
-    <p class="upsell-collection-sub">Por apenas +R$20,10, além de Calvinismo x Arminianismo você leva outros 2 estudos completos.</p>
+    <div class="upsell-ribbon"><span>Só disponível nesta página, só agora</span></div>
+    <p class="upsell-vsl-eyebrow">Antes de fechar, uma pergunta</p>
+    <h2 class="upsell-vsl-title">Calvinismo x Arminianismo foi só a primeira dúvida. <em>Cessacionismo x Continuísmo</em> e o <em>Arrebatamento</em> são as próximas duas — e vão aparecer mais cedo do que você imagina.</h2>
+    <p class="upsell-vsl-sub">Você pode resolver as três agora, de uma vez, e nunca mais precisar procurar material confiável quando a dúvida chegar. Somando o valor de cada material — Calvinismo, Cessacionismo e o Guia do Arrebatamento — o combo vale R$233,90. Fechando agora, você leva os três por R$37 — uma economia de R$196,90, maior do que o valor de qualquer um dos três sozinho. Depois que você sair desta página, essa condição não volta.</p>
 
     <div class="upsell-showcase">
+
       <div class="upsell-product">
         <div class="upsell-product-cover">
-          <img src="assets/prints/premium/premium_1_capa.webp" alt="Capa do estudo Calvinismo x Arminianismo">
+          <img src="assets/prints/premium/premium_1_capa.webp" alt="Capa do material Calvinismo e Arminianismo">
         </div>
-        <p class="upsell-product-name">Calvinismo x Arminianismo</p>
+        <p class="upsell-product-name">Calvinismo e Arminianismo, ponto a ponto</p>
+        <p class="upsell-product-kicker">O que você já vai levar hoje</p>
+        <ul class="upsell-product-list">
+          <li>✓ Infográfico TULIP vs FACTS</li>
+          <li>✓ Infográfico das diferenças ponto a ponto</li>
+          <li>✓ Infográfico do contexto histórico</li>
+          <li>✓ E-book: O Grande Debate Soteriológico</li>
+          <li>✓ E-book: Fé, História e Doutrina</li>
+          <li>✓ E-book: A Salvação em Debate</li>
+          <li>✓ Flashcards de revisão</li>
+          <li>✓ Quiz interativo</li>
+        </ul>
       </div>
 
       <div class="upsell-plus">+</div>
 
       <div class="upsell-product">
         <div class="upsell-product-cover">
-          <img src="assets/upsell/cessacionismo-capa.jpg" alt="Capa do estudo Cessacionismo x Continuísmo">
+          <img src="assets/upsell/cessacionismo-capa.jpg" alt="Capa do material Cessacionismo, Providencialismo e Continuísmo">
         </div>
-        <p class="upsell-product-name">CESSACIONISMO X CONTINUÍSMO</p>
-        <p class="upsell-product-kicker">Os dons espirituais ainda existem hoje?</p>
-        <div class="upsell-preview-strip">
-          <img src="assets/upsell/print-parte1.jpg" alt="Preview de página interna sobre Cessacionismo">
-          <img src="assets/upsell/print-parte5.jpg" alt="Preview de página interna sobre dons espirituais">
-        </div>
-        <ul class="upsell-short-list">
-          <li>Profecia • Línguas • Curas • Dons espirituais</li>
-          <li>Entenda os principais argumentos bíblicos das duas posições.</li>
+        <p class="upsell-product-name">Cessacionismo, Providencialismo e Continuísmo</p>
+        <p class="upsell-product-kicker">A próxima pergunta que vem depois desta</p>
+        <ul class="upsell-product-list">
+          <li>✓ Guia completo em texto (8 módulos)</li>
+          <li>✓ Vídeo-resumo das três posições</li>
+          <li>✓ Audiocast Dons Espirituais, pra ouvir em qualquer lugar</li>
+          <li>✓ Infográficos das 3 posições lado a lado</li>
+          <li>✓ Tabela comparativa das 3 posições</li>
+          <li>✓ Linha do tempo histórica</li>
+          <li>✓ Glossário completo de termos</li>
         </ul>
       </div>
 
@@ -1070,26 +1073,48 @@ body {
         <div class="upsell-product-cover mock">
           <p class="mock-kicker">Guia de estudo</p>
           <p class="mock-title">Arrebatamento</p>
-          <p class="mock-pages">Estudo completo</p>
+          <p class="mock-pages">156 páginas</p>
         </div>
-        <p class="upsell-product-name">ARREBATAMENTO</p>
-        <p class="upsell-product-kicker">A Igreja será arrebatada antes, durante ou depois da Tribulação?</p>
-        <div class="upsell-preview-strip">
-          <img src="assets/upsell/print-apresentacao1.jpg" alt="Preview de página interna do estudo Arrebatamento">
-          <img src="assets/upsell/print-apresentacao2.jpg" alt="Preview de página interna do estudo Arrebatamento">
-        </div>
-        <ul class="upsell-short-list">
-          <li>Pré • Meso • Pós-tribulacionismo</li>
-          <li>Compare as principais interpretações e os argumentos de cada posição.</li>
+        <p class="upsell-product-name">Guia de Estudo sobre o Arrebatamento</p>
+        <p class="upsell-product-kicker">A pergunta que todo estudo escatológico levanta</p>
+        <ul class="upsell-product-list">
+          <li>✓ Fundamentos do tema</li>
+          <li>✓ A Grande Tribulação</li>
+          <li>✓ Textos decisivos do debate</li>
+          <li>✓ Pré-tribulacionismo</li>
+          <li>✓ Meso e pré-ira</li>
+          <li>✓ Pós-tribulacionismo</li>
+          <li>✓ As correntes frente a frente</li>
+          <li>✓ História do debate e conclusão</li>
         </ul>
+      </div>
+
+    </div>
+
+    <!-- PROVA VISUAL: botao abre lightbox com as paginas do guia (nitidas); infograficos ficam borrados abaixo -->
+    <div class="upsell-proof">
+      <button type="button" class="upsell-proof-btn" onclick="openProofGallery()">🔍 Ver imagens reais do produto</button>
+      <p class="upsell-proof-btn-note">9 páginas reais do material de Cessacionismo, Providencialismo e Continuísmo</p>
+
+      <p class="upsell-proof-label" style="margin-top:34px;">Infográficos completos — prévia</p>
+      <div class="upsell-proof-grid">
+        <div class="upsell-proof-card blurred"><img src="assets/upsell/infografico-cessacionismo.jpg" alt="Infográfico completo: Cessacionismo" draggable="false"></div>
+        <div class="upsell-proof-card blurred"><img src="assets/upsell/infografico-providencialismo.jpg" alt="Infográfico completo: Providencialismo" draggable="false"></div>
+        <div class="upsell-proof-card blurred"><img src="assets/upsell/infografico-continuismo.jpg" alt="Infográfico completo: Continuísmo" draggable="false"></div>
       </div>
     </div>
 
     <div class="upsell-vsl-footer">
-      <p class="upsell-vsl-old-price">3 estudos separados: R$50,70</p>
-      <p class="upsell-vsl-price-note">COLEÇÃO COMPLETA: R$37</p>
-      <p class="upsell-proof-btn-note" style="margin: 0 0 18px;">Você adiciona os outros 2 estudos por apenas +R$20,10</p>
-      <a href="https://pay.kiwify.com.br/28gzTaK" class="btn-mega" target="_blank">QUERO OS 3 ESTUDOS POR R$37</a>
+      <ul class="upsell-value-stack">
+        <li><span>Calvinismo e Arminianismo, ponto a ponto</span><strong>R$87,00</strong></li>
+        <li><span>Cessacionismo, Providencialismo e Continuísmo (kit completo)</span><strong>R$97,00</strong></li>
+        <li><span>Guia de Estudo sobre o Arrebatamento (156 páginas)</span><strong>R$49,90</strong></li>
+      </ul>
+      <p class="upsell-vsl-old-price">Valor total se comprado avulso: R$233,90</p>
+      <div class="upsell-vsl-price"><sup>R$</sup>37<span class="offer-price-cents">,00</span></div>
+      <p class="upsell-vsl-price-note">Os 3 materiais juntos — economize R$196,90</p>
+      <a href="https://pay.kiwify.com.br/28gzTaK" class="btn-mega" target="_blank">Sim, quero os 3 estudos completos por R$37</a>
+      <p class="upsell-vsl-safe">🔒 Sem letra miúda, sem pegadinha depois · Kiwify · Garantia de 7 dias</p>
     </div>
   </div>
 </section>
